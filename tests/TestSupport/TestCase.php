@@ -21,8 +21,6 @@ class TestCase extends Orchestra
         Factory::guessFactoryNamesUsing(
             fn (string $modelName) => 'Spatie\\LoginLink\\Tests\\TestSupport\\Database\\Factories\\'.class_basename($modelName).'Factory'
         );
-
-        Route::get('/', fn () => 'this is the home page');
     }
 
     protected function getPackageProviders($app)
@@ -34,6 +32,13 @@ class TestCase extends Orchestra
 
     public function getEnvironmentSetUp($app)
     {
+        $this
+            ->setUpDatabase()
+            ->setupRoutes();
+    }
+
+    protected function setUpDatabase(): self
+    {
         config()->set('database.default', 'testing');
 
         Schema::create('users', function (Blueprint $table) {
@@ -44,5 +49,15 @@ class TestCase extends Orchestra
 
             $table->timestamps();
         });
+
+        return $this;
+    }
+
+    protected function setupRoutes(): self
+    {
+        Route::get('/', fn () => 'this is the home page');
+        Route::get('custom-url', fn() => 'custom page')->name('customUrlRouteName');
+
+        return $this;
     }
 }

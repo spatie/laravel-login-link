@@ -34,6 +34,12 @@ class LoginLinkController
             }
         }
 
+        if (! $identifier) {
+            if ($user = $authenticatableClass::first()) {
+                return $user;
+            }
+        }
+
         $attributes = $request->userAttributes ?? [];
 
         if ($identifier) {
@@ -86,7 +92,7 @@ class LoginLinkController
         }
 
         if ($routeName = config('login-link.redirect_route_name')) {
-            return config($routeName);
+            return route($routeName);
         }
 
         return '/';
