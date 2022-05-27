@@ -1,5 +1,6 @@
 <?php
 
+use Spatie\LoginLink\Exceptions\InvalidUserClass;
 use function Pest\Laravel\post;
 use Spatie\LoginLink\Tests\TestSupport\Models\User;
 
@@ -69,4 +70,10 @@ it('will redirect to the configured route name by default', function () {
     post(route('loginLinkLogin'), $data)->assertRedirect(route('customUrlRouteName'));
 
     expectUserToBeLoggedIn();
+});
+
+it('will throw an exception when a user model is not configured', function () {
+    config()->set('login-link.user_model', null);
+
+    post(route('loginLinkLogin'))->assertStatus(500);
 });
