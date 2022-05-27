@@ -3,7 +3,6 @@
 namespace Spatie\LoginLink\Tests\TestSupport\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Str;
 use Spatie\LoginLink\Tests\TestSupport\Models\User;
 
 class UserFactory extends Factory
