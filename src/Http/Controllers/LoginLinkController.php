@@ -54,7 +54,7 @@ class LoginLinkController
     public function getAuthenticatableIdentifier(LoginLinkRequest $request): ?array
     {
         if ($request->key) {
-            $userClass = new $this->getAuthenticatableClass();
+            $userClass = new ($this->getAuthenticatableClass());
 
             return [
                 'attribute' => ($userClass)->getKeyName(),

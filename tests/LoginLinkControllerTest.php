@@ -36,6 +36,24 @@ it('can login an existing user with a specific email', function () {
     expect(User::count())->toBe(1);
 });
 
+it('can create a user with specific id', function () {
+    $data = ['key' => '123'];
+
+    post(route('loginLinkLogin'), $data)->assertRedirect();
+
+    expectUserToBeLoggedIn(['id' => 123]);
+});
+
+it('can login an existing user with a specific id', function () {
+    User::factory()->create(['id' => 123]);
+    $data = ['key' => 123];
+
+    post(route('loginLinkLogin'), $data)->assertRedirect();
+
+    expectUserToBeLoggedIn(['id' => 123]);
+    expect(User::count())->toBe(1);
+});
+
 it('can redirect to a specific url', function () {
     $data['redirectUrl'] = 'custom-url';
 
