@@ -4,7 +4,7 @@
 
         <input type="hidden" name="email" value="{{ $email }}">
         <input type="hidden" name="key" value="{{  $key }}">
-        <input type="hidden" name="attributes" value=@json($userAttributes)>
+        <input type="hidden" name="user_attributes" value=@json($userAttributes)>
 
         @include('login-link::loginLinkButton')
     </form>
