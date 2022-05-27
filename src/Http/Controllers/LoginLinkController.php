@@ -3,7 +3,6 @@
 namespace Spatie\LoginLink\Http\Controllers;
 
 use Illuminate\Contracts\Auth\Authenticatable;
-use Illuminate\Foundation\Auth\User;
 use Spatie\LoginLink\Exceptions\InvalidUserClass;
 use Spatie\LoginLink\Exceptions\NotAllowedInCurrentEnvironment;
 use Spatie\LoginLink\Http\Requests\LoginLinkRequest;
@@ -16,7 +15,7 @@ class LoginLinkController
 
         $authenticatable = $this->getAuthenticatable($request);
 
-        auth()->login($authenticatable);
+        $this->performLogin($authenticatable);
 
         $redirectUrl = $this->getRedirectUrl($request);
 
@@ -77,9 +76,8 @@ class LoginLinkController
 
     protected function getAuthenticatableClass(): string
     {
-        (new User())->getKeyName();
-
         return config('login-link.user_model')
+            ?? config('auth.providers.users.model')
             ?? throw InvalidUserClass::notFound();
     }
 
@@ -108,5 +106,10 @@ class LoginLinkController
         if (! app()->environment($allowedEnvironments)) {
             throw NotAllowedInCurrentEnvironment::make($allowedEnvironments);
         }
+    }
+
+    protected function performLogin(Authenticatable $authenticatable): void
+    {
+        auth()->login($authenticatable);
     }
 }

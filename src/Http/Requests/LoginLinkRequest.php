@@ -10,9 +10,9 @@ class LoginLinkRequest extends FormRequest
     {
         return [
             'key' => '',
-            'email' => 'email',
-            'user_attributes' => 'json',
-            'redirectUrl' => 'string',
+            'email' => '',
+            'user_attributes' => '',
+            'redirectUrl' => '',
         ];
     }
 

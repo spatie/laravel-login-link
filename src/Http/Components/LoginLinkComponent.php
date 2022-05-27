@@ -10,7 +10,7 @@ class LoginLinkComponent extends Component
         public ?string $key = null,
         public ?string $email = null,
         public array $userAttributes = [],
-        public string $label = 'Login',
+        public string $label = 'Developer Login',
     ) {
     }
 

@@ -1,3 +1,3 @@
-<button type="submit">
+<button class="underline" type="submit">
     {{ $label }}
 </button>
