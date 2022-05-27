@@ -11,4 +11,6 @@ return [
     'login_link_component',
 
     'redirect_route_name' => null,
+
+    'allowed_environments' => ['local']
 ];

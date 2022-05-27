@@ -17,6 +17,7 @@ class TestCase extends Orchestra
         parent::setUp();
 
         config()->set('login-link.user_model', User::class);
+        config()->set('login-link.allowed_environments', ['testing']);
 
         Factory::guessFactoryNamesUsing(
             fn (string $modelName) => 'Spatie\\LoginLink\\Tests\\TestSupport\\Database\\Factories\\'.class_basename($modelName).'Factory'

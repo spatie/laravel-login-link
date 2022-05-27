@@ -1,6 +1,5 @@
 <?php
 
-use Spatie\LoginLink\Exceptions\InvalidUserClass;
 use function Pest\Laravel\post;
 use Spatie\LoginLink\Tests\TestSupport\Models\User;
 
@@ -76,4 +75,12 @@ it('will throw an exception when a user model is not configured', function () {
     config()->set('login-link.user_model', null);
 
     post(route('loginLinkLogin'))->assertStatus(500);
+});
+
+it('will not work in the wrong environment', function () {
+    config()->set('login-link.allowed_environments', ['other-environment']);
+
+    post(route('loginLinkLogin'))->assertStatus(500);
+
+    expect(auth()->check())->toBeFalse();
 });

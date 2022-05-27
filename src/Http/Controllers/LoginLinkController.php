@@ -5,12 +5,15 @@ namespace Spatie\LoginLink\Http\Controllers;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Foundation\Auth\User;
 use Spatie\LoginLink\Exceptions\InvalidUserClass;
+use Spatie\LoginLink\Exceptions\NotAllowedInCurrentEnvironment;
 use Spatie\LoginLink\Http\Requests\LoginLinkRequest;
 
 class LoginLinkController
 {
     public function __invoke(LoginLinkRequest $request)
     {
+        $this->ensureAllowedEnvironment();
+
         $authenticatable = $this->getAuthenticatable($request);
 
         auth()->login($authenticatable);
@@ -96,5 +99,14 @@ class LoginLinkController
         }
 
         return '/';
+    }
+
+    protected function ensureAllowedEnvironment(): void
+    {
+        $allowedEnvironments = config('login-link.allowed_environments');
+
+        if (! app()->environment($allowedEnvironments)) {
+            throw NotAllowedInCurrentEnvironment::make($allowedEnvironments);
+        }
     }
 }
