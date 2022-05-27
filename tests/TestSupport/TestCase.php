@@ -56,7 +56,7 @@ class TestCase extends Orchestra
     protected function setupRoutes(): self
     {
         Route::get('/', fn () => 'this is the home page');
-        Route::get('custom-url', fn() => 'custom page')->name('customUrlRouteName');
+        Route::get('custom-url', fn () => 'custom page')->name('customUrlRouteName');
 
         return $this;
     }
