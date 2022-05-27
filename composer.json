@@ -1,17 +1,17 @@
 {
-    "name": ":vendor_slug/:package_slug",
-    "description": ":package_description",
+    "name": "spatie/laravel-local-login",
+    "description": "Quickly login to your local environment",
     "keywords": [
-        ":vendor_name",
+        "spatie",
         "laravel",
-        ":package_slug"
+        "laravel-local-login"
     ],
-    "homepage": "https://github.com/:vendor_slug/:package_slug",
+    "homepage": "https://github.com/spatie/laravel-local-login",
     "license": "MIT",
     "authors": [
         {
-            "name": ":author_name",
-            "email": "author@domain.com",
+            "name": "Freek Van der Herten",
+            "email": "freek@spatie.be",
             "role": "Developer"
         }
     ],
@@ -23,25 +23,21 @@
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^3.8",
         "nunomaduro/collision": "^6.0",
-        "nunomaduro/larastan": "^2.0.1",
         "orchestra/testbench": "^7.0",
         "pestphp/pest": "^1.21",
         "pestphp/pest-plugin-laravel": "^1.1",
-        "phpstan/extension-installer": "^1.1",
-        "phpstan/phpstan-deprecation-rules": "^1.0",
-        "phpstan/phpstan-phpunit": "^1.0",
         "phpunit/phpunit": "^9.5",
         "spatie/laravel-ray": "^1.26"
     },
     "autoload": {
         "psr-4": {
-            "VendorName\\Skeleton\\": "src",
-            "VendorName\\Skeleton\\Database\\Factories\\": "database/factories"
+            "Spatie\\LocalLogin\\": "src",
+            "Spatie\\LocalLogin\\Database\\Factories\\": "database/factories"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "VendorName\\Skeleton\\Tests\\": "tests"
+            "Spatie\\LocalLogin\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -56,10 +52,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "VendorName\\Skeleton\\SkeletonServiceProvider"
+                "Spatie\\LocalLogin\\LocalLoginServiceProvider"
             ],
             "aliases": {
-                "Skeleton": "VendorName\\Skeleton\\Facades\\Skeleton"
+                "LocalLogin": "Spatie\\LocalLogin\\Facades\\LocalLogin"
             }
         }
     },

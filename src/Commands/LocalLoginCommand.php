@@ -1,12 +1,12 @@
 <?php
 
-namespace VendorName\Skeleton\Commands;
+namespace Spatie\LocalLogin\Commands;
 
 use Illuminate\Console\Command;
 
-class SkeletonCommand extends Command
+class LocalLoginCommand extends Command
 {
-    public $signature = 'skeleton';
+    public $signature = 'laravel-local-login';
 
     public $description = 'My command';
 
