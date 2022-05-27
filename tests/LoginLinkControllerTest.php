@@ -1,6 +1,5 @@
 <?php
 
-use Spatie\LoginLink\Exceptions\InvalidUserClass;
 use function Pest\Laravel\post;
 use Spatie\LoginLink\Tests\TestSupport\Models\User;
 
