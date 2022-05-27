@@ -11,7 +11,7 @@ class LoginLinkRequest extends FormRequest
         return [
             'id' => '',
             'email' => 'email',
-            'attributes' => 'array',
+            'userAttributes' => 'array',
             'redirectUrl' => 'string',
         ];
     }

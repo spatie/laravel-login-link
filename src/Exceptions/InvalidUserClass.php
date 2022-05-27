@@ -8,6 +8,6 @@ class InvalidUserClass extends Exception
 {
     public static function notFound(): self
     {
-        // to implement
+        return new self('Could not determine which User class should be logged in.');
     }
 }

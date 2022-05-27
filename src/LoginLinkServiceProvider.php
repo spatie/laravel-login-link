@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 use Spatie\LoginLink\Http\Components\LoginLinkComponent;
+use Spatie\LoginLink\Http\Controllers\LoginLinkController;
 
 class LoginLinkServiceProvider extends PackageServiceProvider
 {
@@ -17,7 +18,7 @@ class LoginLinkServiceProvider extends PackageServiceProvider
             ->hasConfigFile()
             ->hasViews();
 
-        Route::post('laravel-login-link-login')->name('loginLinkLogin');
+        Route::post('laravel-login-link-login', LoginLinkController::class)->name('loginLinkLogin');
 
         Blade::component(LoginLinkComponent::class, 'login-link::loginLink');
     }
