@@ -32,4 +32,3 @@ it('can render a login link with custom user attributes', function () {
 
     assertMatchesHtmlSnapshot($html);
 });
-
