@@ -16,6 +16,6 @@ class LoginLinkComponent extends Component
 
     public function render()
     {
-        return 'login-link::login-link';
+        return view('login-link::loginLink');
     }
 }

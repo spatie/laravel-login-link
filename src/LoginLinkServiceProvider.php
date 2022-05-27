@@ -20,6 +20,6 @@ class LoginLinkServiceProvider extends PackageServiceProvider
 
         Route::post('laravel-login-link-login', LoginLinkController::class)->name('loginLinkLogin');
 
-        Blade::component(LoginLinkComponent::class, 'login-link::loginLink');
+        Blade::component(LoginLinkComponent::class, 'login-link');
     }
 }
