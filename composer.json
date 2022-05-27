@@ -1,12 +1,12 @@
 {
-    "name": "spatie/laravel-local-login",
+    "name": "spatie/laravel-login-link",
     "description": "Quickly login to your local environment",
     "keywords": [
         "spatie",
         "laravel",
-        "laravel-local-login"
+        "laravel-login-link"
     ],
-    "homepage": "https://github.com/spatie/laravel-local-login",
+    "homepage": "https://github.com/spatie/laravel-login-link",
     "license": "MIT",
     "authors": [
         {
@@ -31,13 +31,13 @@
     },
     "autoload": {
         "psr-4": {
-            "Spatie\\LocalLogin\\": "src",
-            "Spatie\\LocalLogin\\Database\\Factories\\": "database/factories"
+            "Spatie\\LoginLink\\": "src",
+            "Spatie\\LoginLink\\Database\\Factories\\": "database/factories"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Spatie\\LocalLogin\\Tests\\": "tests"
+            "Spatie\\LoginLink\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -52,11 +52,8 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Spatie\\LocalLogin\\LocalLoginServiceProvider"
-            ],
-            "aliases": {
-                "LocalLogin": "Spatie\\LocalLogin\\Facades\\LocalLogin"
-            }
+                "Spatie\\LoginLink\\LoginLinkServiceProvider"
+            ]
         }
     },
     "minimum-stability": "dev",
