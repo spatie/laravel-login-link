@@ -14,7 +14,7 @@ When developing an app that has an admin section (or any non-public section), yo
 
 This package solves that problem by offering a component that will render a login link. When clicked, that link will log you in.
 
-In your login view, you can add the `x-login-link` component to show the login link.
+In your login view, you can add the `x-login-link` component to show the login link. The `@env('local')` will make sure that the links are only rendered in the local environment.
 
 ```blade
 @env('local')
@@ -25,7 +25,7 @@ In your login view, you can add the `x-login-link` component to show the login l
 @endenv
 ```
 
-Here's how that might look like in the browser.
+Here's how that might look like in the browser:
 
 <img style="width: 500px" alt="screenshot" src="https://github.com/spatie/laravel-login-link/blob/main/docs/login.png?raw=true" />
 
