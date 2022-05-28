@@ -8,9 +8,7 @@
 [![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/spatie/laravel-login-link/Check%20&%20fix%20styling?label=code%20style)](https://github.com/spatie/laravel-login-link/actions?query=workflow%3A"Check+%26+fix+styling"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/spatie/laravel-login-link.svg?style=flat-square)](https://packagist.org/packages/spatie/laravel-login-link)
 
-**THIS PACKAGE IS IN DEVELOPMENT, DO NOT USE IT (YET)**
-
-When developing an app that has an admin section (or any non-public section), you'll likely seed test users to login. In large teams that work on many different apps it can be cumbersome to keep track of the right credentials. Is the user account "freek@spatie.be", or "user@spatie.be", or even "admin@spatie.be" Is that password "password", or "secret", or something is else?
+When developing an app that has an admin section (or any non-public section), you'll likely seed test users to login. In large teams that work on many different apps it can be cumbersome to keep track of the right credentials. Is the user account "freek@spatie.be", or "user@spatie.be", or even "admin@spatie.be"? Is that password "password", or "secret", or something is else? How do I login with a user that has a different role?
 
 This package solves that problem by offering a component that will render a login link. When clicked, that link will log you in.
 
