@@ -105,10 +105,12 @@ php artisan vendor:publish --tag="login-link-views"
 
 ## Usage
 
-To render a login link, simply add this Blade component to your view:
+To render a login link, simply add the `x-login-link` Blade component to your view. He highly recommend to only render it in the `local` environment.
 
 ```blade
-<x-login-link />
+@env('local')
+    <x-login-link />
+@endenv('local')
 ```
 
 This component will render a link that, when clicked, will log you in. By default, it will redirect you to  `/`, but you can customize that by specifying a route name in the `redirect_route_name` of the `login-link` config file.
@@ -162,6 +164,25 @@ Here's how you can create a red, underlined link (when using Tailwind CSS).
 If the user that needs to be logged in does not exist, the package will use the factory of your user model to create the user, and log that new user in.
 
 If you don't want this behaviour, set `automatically_create_missing_users` in the `local-link` config file to `false`.
+
+### Usage with Vue / React / ...
+
+The package doesn't come with any JS component out of the box. When you use a JS front end framework to render your views, you can still make use of the package.
+
+You should send a `POST` request to `/laravel-login-link-login`. If you don't give it any payload, then it will log in the first user in your users table. If there is no user, it will be created.
+
+Optionally, you can post any of these payload fields. The functionality of these payloads fields match those of the attributes that you can pass to `x-login-link` component.
+
+- `email`: attempt to log in the user with the given email address
+- `key`: attempt to log in the user with the given key (in most cases the `id` of the users)
+- `redirect_url`: to which URL should we redirect after logging in
+- `user_attributes`: an array containing the attributes that the user that will be logged in needs to have.
+
+### Usage in other environments
+
+Out of the box, the login link will only work in a local environment. If you want to use it other environments, set the `allowed_environments` key of the `login-link` config file to the names of those environments.
+
+Beware however, that you should never display login links in any environment that is publicly reachable, as it will allow anyone to log in.
 
 ## Testing
 
