@@ -8,7 +8,6 @@ use Spatie\LoginLink\Exceptions\DidNotFindUserToLogIn;
 use Spatie\LoginLink\Exceptions\InvalidUserClass;
 use Spatie\LoginLink\Exceptions\NotAllowedInCurrentEnvironment;
 use Spatie\LoginLink\Http\Requests\LoginLinkRequest;
-use Spatie\LoginLink\Tests\TestSupport\Models\User;
 
 class LoginLinkController
 {
@@ -41,7 +40,7 @@ class LoginLinkController
         $authenticatableClass = $this->getAuthenticatableClass();
 
         $user = $authenticatableClass::query()
-            ->when(count($attributes), fn(Builder $query) => $query->where($attributes))
+            ->when(count($attributes), fn (Builder $query) => $query->where($attributes))
             ->first();
 
         if ($user) {
@@ -69,6 +68,7 @@ class LoginLinkController
                 $identifier['attribute'] => $identifier['value'],
             ], $attributes);
         }
+
         return $attributes;
     }
 
@@ -117,6 +117,4 @@ class LoginLinkController
 
         return '/';
     }
-
-
 }
