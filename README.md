@@ -25,7 +25,7 @@ In your login view, you can add the `x-login-link` component to show the login l
 @endenv
 ```
 
-<img style="width: 200px" alt="screenshot" src="https://github.com/spatie/laravel-login-link/blob/main/docs/login.png?raw=true" />
+<img style="width: 500px" alt="screenshot" src="https://github.com/spatie/laravel-login-link/blob/main/docs/login.png?raw=true" />
 
 It is meant for local development, and probably shouldn't be used in any public reachable environment.
 
