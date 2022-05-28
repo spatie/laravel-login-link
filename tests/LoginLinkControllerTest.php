@@ -66,7 +66,7 @@ it('can login an existing user with a specific id', function () {
     expect(User::count())->toBe(1);
 });
 
-it('can create and login a user with specific attributes', function() {
+it('can create and login a user with specific attributes', function () {
     $data = ['user_attributes' => json_encode(['role' => 'admin'])];
 
     post(route('loginLinkLogin'), $data)->assertRedirect();
@@ -75,7 +75,7 @@ it('can create and login a user with specific attributes', function() {
     expect(User::count())->toBe(1);
 });
 
-it('can create login an existing user with specific attributes', function() {
+it('can create login an existing user with specific attributes', function () {
     User::factory()->create(['role' => 'admin']);
     expect(User::count())->toBe(1);
 
@@ -87,10 +87,10 @@ it('can create login an existing user with specific attributes', function() {
     expect(User::count())->toBe(1);
 });
 
-it('can create a user with both email and custom attributes', function() {
+it('can create a user with both email and custom attributes', function () {
     $data = [
         'email' => 'freek@spatie.be',
-        'user_attributes' => json_encode(['role' => 'admin'])
+        'user_attributes' => json_encode(['role' => 'admin']),
     ];
 
     post(route('loginLinkLogin'), $data)->assertRedirect();
@@ -132,10 +132,9 @@ it('will not work in the wrong environment', function () {
     expect(auth()->check())->toBeFalse();
 });
 
-it('will throw an exception when no user class can be determined', function() {
+it('will throw an exception when no user class can be determined', function () {
     config()->set('login-link.user_model', null);
     config()->set('auth.providers.users.model', null);
 
     post(route('loginLinkLogin'))->assertStatus(500);
-
 });
