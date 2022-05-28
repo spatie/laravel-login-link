@@ -5,8 +5,8 @@ use Spatie\LoginLink\Http\Controllers\LoginLinkController;
 return [
     /*
      * The user model that should be logged in. If this is set to `null`
-     * we'll take a look at the model used for the users
-     * provider in `config/auth.php`
+     * we'll take a look at the model used for the `users`
+     * provider in config/auth.php
      */
     'user_model' => null,
 
@@ -32,7 +32,7 @@ return [
 
     /*
      * Login links will only work in these environments. In all
-     * other environment, an exception will be thrown.
+     * other environments, an exception will be thrown.
      */
     'allowed_environments' => ['local'],
 ];

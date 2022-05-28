@@ -25,6 +25,8 @@ In your login view, you can add the `x-login-link` component to show the login l
 @endenv
 ```
 
+Here's how that might look like in the browser.
+
 <img style="width: 500px" alt="screenshot" src="https://github.com/spatie/laravel-login-link/blob/main/docs/login.png?raw=true" />
 
 It is meant for local development, and probably shouldn't be used in any public reachable environment.
@@ -39,44 +41,68 @@ We highly appreciate you sending us a postcard from your hometown, mentioning wh
 
 ## Installation
 
-You can install the package via composer:
+You can install the package via composer. We highly recommend only installing it as a dev dependency, so this code doesn't wind up in your production environment.
 
 ```bash
-composer require spatie/laravel-login-link
-```
-
-You can publish and run the migrations with:
-
-```bash
-php artisan vendor:publish --tag="laravel-login-link-migrations"
-php artisan migrate
+composer require spatie/laravel-login-link --dev
 ```
 
 You can publish the config file with:
 
 ```bash
-php artisan vendor:publish --tag="laravel-login-link-config"
+php artisan vendor:publish --tag="login-link-config"
 ```
 
 This is the contents of the published config file:
 
 ```php
+use Spatie\LoginLink\Http\Controllers\LoginLinkController;
+
 return [
+    /*
+     * The user model that should be logged in. If this is set to `null`
+     * we'll take a look at the model used for the `users`
+     * provider in config/auth.php
+     */
+    'user_model' => null,
+
+    /*
+     * After a login link is clicked, we'll redirect the user to this route.
+     * If it is set to `null` , we'll redirect to `/`.
+     */
+    'redirect_route_name' => null,
+
+    /*
+     * The package will register a route that points to this controller. To have fine
+     * grained control over what happens when a login link is clicked, you can
+     * override this class.
+     */
+    'login_link_controller' => LoginLinkController::class,
+
+
+    /*
+     * This middleware will be applied on the route
+     * that logs in a user via a link.
+     */
+    'middleware' => ['web'],
+
+    /*
+     * Login links will only work in these environments. In all
+     * other environments, an exception will be thrown.
+     */
+    'allowed_environments' => ['local'],
 ];
 ```
 
 Optionally, you can publish the views using
 
 ```bash
-php artisan vendor:publish --tag="laravel-login-link-views"
+php artisan vendor:publish --tag="login-link-views"
 ```
 
 ## Usage
 
-```php
-$LoginLink = new Spatie\LoginLink();
-echo $LoginLink->echoPhrase('Hello, Spatie!');
-```
+// COMING SOON
 
 ## Testing
 
