@@ -141,7 +141,27 @@ You can also specify the attributes of the user the needs to be logged in.
 <x-login-link :user-attributes="['role' => 'admin']"  />
 ```
 
+### Customizing the login link
+
+By default, the package will display use "Developer login" as the text of the login link. You can customize that by passing a `label` attribute.
+
+```blade
+<x-login-link label="Click here to log in">
+```
+
+A login link will have the [Tailwind](https://tailwindcss.com) class `underline` by default. To customize that, you can pass any css class that you want to the class property. These classes will override the `underline` default.
+
+Here's how you can create a red, underlined link (when using Tailwind CSS).
+
+```blade
+<x-login-link class="underline text-red-500">
+```
+
+### Automatic user creation
+
 If the user that needs to be logged in does not exist, the package will use the factory of your user model to create the user, and log that new user in.
+
+If you don't want this behaviour, set `automatically_create_missing_users` in the `local-link` config file to `false`.
 
 ## Testing
 

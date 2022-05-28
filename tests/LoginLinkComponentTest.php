@@ -38,3 +38,9 @@ it('can render a login link with a specific redirect url', function () {
 
     assertMatchesHtmlSnapshot($html);
 });
+
+it('can render a login link with specific css classes', function() {
+    $html = Blade::render('<x-login-link class="text-red-500" />');
+
+    assertMatchesHtmlSnapshot($html);
+});
