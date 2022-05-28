@@ -47,7 +47,7 @@ You can install the package via composer. We highly recommend only installing it
 composer require spatie/laravel-login-link --dev
 ```
 
-You can publish the config file with:
+Optionally, you can publish the config file with:
 
 ```bash
 php artisan vendor:publish --tag="login-link-config"
@@ -59,6 +59,18 @@ This is the contents of the published config file:
 use Spatie\LoginLink\Http\Controllers\LoginLinkController;
 
 return [
+    /*
+     * Login links will only work in these environments. In all
+     * other environments, an exception will be thrown.
+     */
+    'allowed_environments' => ['local'],
+
+    /*
+     * The package will automatically create a user model when trying
+     * to log in a user that doesn't exist.
+     */
+    'automatically_create_missing_users' => true,
+
     /*
      * The user model that should be logged in. If this is set to `null`
      * we'll take a look at the model used for the `users`
@@ -79,18 +91,11 @@ return [
      */
     'login_link_controller' => LoginLinkController::class,
 
-
     /*
      * This middleware will be applied on the route
      * that logs in a user via a link.
      */
     'middleware' => ['web'],
-
-    /*
-     * Login links will only work in these environments. In all
-     * other environments, an exception will be thrown.
-     */
-    'allowed_environments' => ['local'],
 ];
 ```
 
@@ -102,7 +107,43 @@ php artisan vendor:publish --tag="login-link-views"
 
 ## Usage
 
-// COMING SOON
+To render a login link, simply add this Blade component to your view:
+
+```blade
+<x-login-link />
+```
+
+This component will render a link that, when clicked, will log you in. By default, it will redirect you to  `/`, but you can customize that by specifying a route name in the `redirect_route_name` of the `login-link` config file.
+
+You can also specify the redirect URL on the component itself:
+
+```blade
+<x-login-link redirect-url={{ route('dashboard') }}  />
+```
+
+### Specifying the user model to log in
+
+By default, it will use the user model class that is specified in the `providers.users.model` key of the `auth` config file. To override this, you can set the `user_model` of the `login-link` config file to the class name of your user model.
+
+The package will log in the first user in the table. You customize that by passing an `email` attribute. The user with that mail address will be logged in.
+
+```blade
+<x-login-link email="admin@example.com"  />
+```
+
+Alternatively, you can specify the key of the user (in most cases this will be the id)
+
+```blade
+<x-login-link id="123"  />
+```
+
+You can also specify the attributes of the user the needs to be logged in.
+
+```blade
+<x-login-link :user-attributes="['role' => 'admin']"  />
+```
+
+If the user that needs to be logged in does not exist, the package will use the factory of your user model to create the user, and log that new user in.
 
 ## Testing
 

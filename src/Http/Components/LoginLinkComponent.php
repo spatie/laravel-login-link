@@ -11,6 +11,7 @@ class LoginLinkComponent extends Component
         public ?string $email = null,
         public array $userAttributes = [],
         public string $label = 'Developer Login',
+        public ?string $redirectUrl = null,
     ) {
     }
 

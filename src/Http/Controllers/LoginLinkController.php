@@ -3,6 +3,7 @@
 namespace Spatie\LoginLink\Http\Controllers;
 
 use Illuminate\Contracts\Auth\Authenticatable;
+use Spatie\LoginLink\Exceptions\DidNotFindUserToLogIn;
 use Spatie\LoginLink\Exceptions\InvalidUserClass;
 use Spatie\LoginLink\Exceptions\NotAllowedInCurrentEnvironment;
 use Spatie\LoginLink\Http\Requests\LoginLinkRequest;
@@ -39,6 +40,13 @@ class LoginLinkController
         if (! $identifier) {
             if ($user = $authenticatableClass::first()) {
                 return $user;
+            }
+        }
+
+        if (! $user) {
+            if (! config('login-link.automatically_create_missing_users')) {
+                throw DidNotFindUserToLogIn::make();
+
             }
         }
 
@@ -88,8 +96,8 @@ class LoginLinkController
 
     protected function getRedirectUrl(LoginLinkRequest $request): string
     {
-        if ($request->redirectUrl) {
-            return $request->redirectUrl;
+        if ($request->redirect_url) {
+            return $request->redirect_url;
         }
 
         if ($routeName = config('login-link.redirect_route_name')) {

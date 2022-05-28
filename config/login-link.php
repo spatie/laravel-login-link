@@ -4,6 +4,18 @@ use Spatie\LoginLink\Http\Controllers\LoginLinkController;
 
 return [
     /*
+     * Login links will only work in these environments. In all
+     * other environments, an exception will be thrown.
+     */
+    'allowed_environments' => ['local'],
+
+    /*
+     * The package will automatically create a user model when trying
+     * to log in a user that doesn't exist.
+     */
+    'automatically_create_missing_users' => true,
+
+    /*
      * The user model that should be logged in. If this is set to `null`
      * we'll take a look at the model used for the `users`
      * provider in config/auth.php
@@ -23,16 +35,9 @@ return [
      */
     'login_link_controller' => LoginLinkController::class,
 
-
     /*
      * This middleware will be applied on the route
      * that logs in a user via a link.
      */
     'middleware' => ['web'],
-
-    /*
-     * Login links will only work in these environments. In all
-     * other environments, an exception will be thrown.
-     */
-    'allowed_environments' => ['local'],
 ];

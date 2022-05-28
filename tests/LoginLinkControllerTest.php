@@ -55,7 +55,7 @@ it('can login an existing user with a specific id', function () {
 });
 
 it('can redirect to a specific url', function () {
-    $data['redirectUrl'] = 'custom-url';
+    $data['redirect_url'] = 'custom-url';
 
     post(route('loginLinkLogin'), $data)->assertRedirect('custom-url');
 

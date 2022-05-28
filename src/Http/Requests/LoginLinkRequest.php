@@ -12,7 +12,7 @@ class LoginLinkRequest extends FormRequest
             'key' => '',
             'email' => '',
             'user_attributes' => '',
-            'redirectUrl' => '',
+            'redirect_url' => '',
         ];
     }
 
