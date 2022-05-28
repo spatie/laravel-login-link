@@ -105,7 +105,7 @@ php artisan vendor:publish --tag="login-link-views"
 
 ## Usage
 
-To render a login link, simply add the `x-login-link` Blade component to your view. He highly recommend to only render it in the `local` environment.
+To render a login link, simply add the `x-login-link` Blade component to your view. We highly recommend to only render it in the `local` environment.
 
 ```blade
 @env('local')
