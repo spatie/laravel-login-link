@@ -33,7 +33,7 @@ it('can render a login link with custom user attributes', function () {
     assertMatchesHtmlSnapshot($html);
 });
 
-it('can render a login link with a specific redirect url', function() {
+it('can render a login link with a specific redirect url', function () {
     $html = Blade::render('<x-login-link redirect-url="{{ route(\'customUrlRouteName\') }}" />');
 
     assertMatchesHtmlSnapshot($html);

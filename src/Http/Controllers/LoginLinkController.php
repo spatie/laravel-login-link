@@ -46,7 +46,6 @@ class LoginLinkController
         if (! $user) {
             if (! config('login-link.automatically_create_missing_users')) {
                 throw DidNotFindUserToLogIn::make();
-
             }
         }
 
