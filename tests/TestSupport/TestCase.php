@@ -47,6 +47,7 @@ class TestCase extends Orchestra
             $table->string('name');
             $table->string('email');
             $table->string('password');
+            $table->string('role');
 
             $table->timestamps();
         });

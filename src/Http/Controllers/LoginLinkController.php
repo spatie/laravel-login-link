@@ -3,10 +3,12 @@
 namespace Spatie\LoginLink\Http\Controllers;
 
 use Illuminate\Contracts\Auth\Authenticatable;
+use Illuminate\Database\Eloquent\Builder;
 use Spatie\LoginLink\Exceptions\DidNotFindUserToLogIn;
 use Spatie\LoginLink\Exceptions\InvalidUserClass;
 use Spatie\LoginLink\Exceptions\NotAllowedInCurrentEnvironment;
 use Spatie\LoginLink\Http\Requests\LoginLinkRequest;
+use Spatie\LoginLink\Tests\TestSupport\Models\User;
 
 class LoginLinkController
 {
@@ -23,42 +25,51 @@ class LoginLinkController
         return redirect()->to($redirectUrl);
     }
 
+    protected function ensureAllowedEnvironment(): void
+    {
+        $allowedEnvironments = config('login-link.allowed_environments');
+
+        if (! app()->environment($allowedEnvironments)) {
+            throw NotAllowedInCurrentEnvironment::make($allowedEnvironments);
+        }
+    }
+
     protected function getAuthenticatable(LoginLinkRequest $request): Authenticatable
     {
-        $identifier = $this->getAuthenticatableIdentifier($request);
+        $attributes = $this->getUserAttributes($request);
 
         $authenticatableClass = $this->getAuthenticatableClass();
 
-        if ($identifier) {
-            $user = $authenticatableClass::where($identifier['attribute'], $identifier['value'])->first();
+        $user = $authenticatableClass::query()
+            ->when(count($attributes), fn(Builder $query) => $query->where($attributes))
+            ->first();
 
-            if ($user) {
-                return $user;
-            }
+        if ($user) {
+            return $user;
         }
 
-        if (! $identifier) {
-            if ($user = $authenticatableClass::first()) {
-                return $user;
-            }
+        if (! config('login-link.automatically_create_missing_users')) {
+            throw DidNotFindUserToLogIn::make();
         }
 
-        if (! $user) {
-            if (! config('login-link.automatically_create_missing_users')) {
-                throw DidNotFindUserToLogIn::make();
+        return $this->createUser($authenticatableClass, $attributes);
+    }
 
-            }
-        }
+    protected function performLogin(Authenticatable $authenticatable): void
+    {
+        auth()->login($authenticatable);
+    }
 
-        $attributes = $request->userAttributes ?? [];
+    protected function getUserAttributes(LoginLinkRequest $request): array
+    {
+        $attributes = $request->userAttributes();
 
-        if ($identifier) {
+        if ($identifier = $this->getAuthenticatableIdentifier($request)) {
             $attributes = array_merge([
                 $identifier['attribute'] => $identifier['value'],
             ], $attributes);
         }
-
-        return $this->createUser($authenticatableClass, $attributes);
+        return $attributes;
     }
 
     public function getAuthenticatableIdentifier(LoginLinkRequest $request): ?array
@@ -107,17 +118,5 @@ class LoginLinkController
         return '/';
     }
 
-    protected function ensureAllowedEnvironment(): void
-    {
-        $allowedEnvironments = config('login-link.allowed_environments');
 
-        if (! app()->environment($allowedEnvironments)) {
-            throw NotAllowedInCurrentEnvironment::make($allowedEnvironments);
-        }
-    }
-
-    protected function performLogin(Authenticatable $authenticatable): void
-    {
-        auth()->login($authenticatable);
-    }
 }

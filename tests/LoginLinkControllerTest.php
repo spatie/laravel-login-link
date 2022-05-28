@@ -26,6 +26,18 @@ it('can create a user with specific email', function () {
     expectUserToBeLoggedIn(['email' => 'freek@spatie.be']);
 });
 
+it('can will not create a user if automatic creation is turned off', function () {
+    config()->set('login-link.automatically_create_missing_users', false);
+
+    $data = ['email' => 'freek@spatie.be'];
+
+    post(route('loginLinkLogin'), $data)->assertStatus(500);
+
+    expect(User::count())->toBe(0);
+
+    expectNotLoggedIn();
+});
+
 it('can login an existing user with a specific email', function () {
     User::factory()->create(['email' => 'freek@spatie.be']);
     $data = ['email' => 'freek@spatie.be'];
@@ -52,6 +64,41 @@ it('can login an existing user with a specific id', function () {
 
     expectUserToBeLoggedIn(['id' => 123]);
     expect(User::count())->toBe(1);
+});
+
+it('can create and login a user with specific attributes', function() {
+    $data = ['user_attributes' => json_encode(['role' => 'admin'])];
+
+    post(route('loginLinkLogin'), $data)->assertRedirect();
+
+    expectUserToBeLoggedIn(['role' => 'admin']);
+    expect(User::count())->toBe(1);
+});
+
+it('can create login an existing user with specific attributes', function() {
+    User::factory()->create(['role' => 'admin']);
+    expect(User::count())->toBe(1);
+
+    $data = ['user_attributes' => json_encode(['role' => 'admin'])];
+
+    post(route('loginLinkLogin'), $data)->assertRedirect();
+
+    expectUserToBeLoggedIn(['role' => 'admin']);
+    expect(User::count())->toBe(1);
+});
+
+it('can create a user with both email and custom attributes', function() {
+    $data = [
+        'email' => 'freek@spatie.be',
+        'user_attributes' => json_encode(['role' => 'admin'])
+    ];
+
+    post(route('loginLinkLogin'), $data)->assertRedirect();
+
+    expectUserToBeLoggedIn([
+        'email' => 'freek@spatie.be',
+        'role' => 'admin',
+    ]);
 });
 
 it('can redirect to a specific url', function () {
@@ -83,4 +130,12 @@ it('will not work in the wrong environment', function () {
     post(route('loginLinkLogin'))->assertStatus(500);
 
     expect(auth()->check())->toBeFalse();
+});
+
+it('will throw an exception when no user class can be determined', function() {
+    config()->set('login-link.user_model', null);
+    config()->set('auth.providers.users.model', null);
+
+    post(route('loginLinkLogin'))->assertStatus(500);
+
 });

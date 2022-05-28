@@ -12,3 +12,8 @@ function expectUserToBeLoggedIn(array $attributes = [])
         expect(auth()->user()->$name)->toBe($value);
     }
 }
+
+function expectNotLoggedIn()
+{
+    expect(auth()->check())->toBeFalse();
+}
