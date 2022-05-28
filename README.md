@@ -10,7 +10,24 @@
 
 **THIS PACKAGE IS IN DEVELOPMENT, DO NOT USE IT (YET)**
 
-This is where your description should go. Limit it to a paragraph or two. Consider adding a small example.
+When developing an app that has an admin section (or any non-public section), you'll likely seed test users to login. In large teams that work on many different apps it can be cumbersome to keep track of the right credentials. Is the user account "freek@spatie.be", or "user@spatie.be", or even "admin@spatie.be" Is that password "password", or "secret", or something is else?
+
+This package solves that problem by offering a component that will render a login link. When clicked, that link will log you in.
+
+In your login view, you can add the `x-login-link` component to show the login link.
+
+```blade
+@env('local')
+    <div class="space-y-2">
+        <x-login-link email="admin@spatie.be" label="Login as admin"/>
+        <x-login-link email="user@spatie.be" label="Login as regular user"/>
+    </div>
+@endenv
+```
+
+![screenshot]()
+
+It is meant for local development, and probably shouldn't be used in any public reachable environment.
 
 ## Support us
 
