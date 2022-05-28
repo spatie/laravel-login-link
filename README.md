@@ -110,7 +110,7 @@ To render a login link, simply add the `x-login-link` Blade component to your vi
 ```blade
 @env('local')
     <x-login-link />
-@endenv('local')
+@endenv
 ```
 
 This component will render a link that, when clicked, will log you in. By default, it will redirect you to  `/`, but you can customize that by specifying a route name in the `redirect_route_name` of the `login-link` config file.
