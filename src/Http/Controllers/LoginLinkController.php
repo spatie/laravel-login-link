@@ -72,7 +72,7 @@ class LoginLinkController
         return $attributes;
     }
 
-    public function getAuthenticatableIdentifier(LoginLinkRequest $request): ?array
+    protected function getAuthenticatableIdentifier(LoginLinkRequest $request): ?array
     {
         if ($request->key) {
             $userClass = new ($this->getAuthenticatableClass());
