@@ -178,6 +178,8 @@ Optionally, you can post any of these payload fields. The functionality of these
 - `redirect_url`: to which URL should we redirect after logging in
 - `user_attributes`: an array containing the attributes that the user that will be logged in needs to have.
 
+Since this is a POST request, make sure to pass a CSRF token as well.
+
 ### Usage in other environments
 
 Out of the box, the login link will only work in a local environment. If you want to use it other environments, set the `allowed_environments` key of the `login-link` config file to the names of those environments.
