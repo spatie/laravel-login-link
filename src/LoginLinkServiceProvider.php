@@ -18,7 +18,7 @@ class LoginLinkServiceProvider extends PackageServiceProvider
             ->hasConfigFile()
             ->hasViews();
 
-        Route::post('laravel-login-link-login', LoginLinkController::class)
+        Route::post('laravel-login-link-login', config('login-link.login_link_controller'))
             ->name('loginLinkLogin')
             ->middleware(config('login-link.middleware'));
 
