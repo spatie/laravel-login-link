@@ -39,10 +39,10 @@ We highly appreciate you sending us a postcard from your hometown, mentioning wh
 
 ## Installation
 
-You can install the package via composer. We highly recommend only installing it as a dev dependency, so this code doesn't wind up in your production environment.
+You can install the package via composer. 
 
 ```bash
-composer require spatie/laravel-login-link --dev
+composer require spatie/laravel-login-link
 ```
 
 Optionally, you can publish the config file with:
