@@ -23,11 +23,11 @@ In your login view, you can add the `x-login-link` component to show the login l
 @endenv
 ```
 
-Here's how that might look like in the browser:
+Here's what that might look like in the browser:
 
 <img style="width: 500px" alt="screenshot" src="https://github.com/spatie/laravel-login-link/blob/main/docs/login.png?raw=true" />
 
-It is meant for local development, and probably shouldn't be used in any public reachable environment.
+It is meant for local development, and probably shouldn't be used in any publicly reachable environment.
 
 ## Support us
 
@@ -131,13 +131,13 @@ The package will log in the first user in the table. You customize that by passi
 <x-login-link email="admin@example.com"  />
 ```
 
-Alternatively, you can specify the key of the user (in most cases this will be the id)
+Alternatively, you can specify the primary key of the user (in most cases this will be the `id`)
 
 ```blade
 <x-login-link id="123"  />
 ```
 
-You can also specify the attributes of the user the needs to be logged in.
+You can also specify the attributes of the user that needs to be logged in.
 
 ```blade
 <x-login-link :user-attributes="['role' => 'admin']"  />
@@ -145,7 +145,7 @@ You can also specify the attributes of the user the needs to be logged in.
 
 ### Customizing the login link
 
-By default, the package will display use "Developer login" as the text of the login link. You can customize that by passing a `label` attribute.
+By default, the package will display "Developer login" as the text of the login link. You can customize that by passing a `label` attribute.
 
 ```blade
 <x-login-link label="Click here to log in">
