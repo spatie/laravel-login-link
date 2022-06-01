@@ -95,14 +95,13 @@ class LoginLinkController
 
     protected function getAuthenticatableClass(?string $guard): string
     {
-        if ($guard === null) {
-            $provider = config('auth.guards.web.provider');
-        } else {
-            $provider = config('auth.guards.'.$guard.'.provider');
-        }
+        $provider = $guard === null
+            ? config('auth.guards.web.provider')
+            : config("auth.guards.{$guard}.provider");
+
 
         return config('login-link.user_model')
-            ?? config('auth.providers.'.$provider.'.model')
+            ?? config("auth.providers.{$provider}.model")
             ?? throw InvalidUserClass::notFound();
     }
 
