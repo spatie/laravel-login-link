@@ -13,6 +13,7 @@ class LoginLinkRequest extends FormRequest
             'email' => '',
             'user_attributes' => '',
             'redirect_url' => '',
+            'guard' => '',
         ];
     }
 

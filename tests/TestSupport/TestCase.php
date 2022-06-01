@@ -54,6 +54,16 @@ class TestCase extends Orchestra
             $table->timestamps();
         });
 
+        Schema::create('admins', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->string('email');
+            $table->string('password');
+            $table->string('role');
+
+            $table->timestamps();
+        });
+
         return $this;
     }
 

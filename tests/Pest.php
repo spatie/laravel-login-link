@@ -4,16 +4,16 @@ use Spatie\LoginLink\Tests\TestSupport\TestCase;
 
 uses(TestCase::class)->in(__DIR__);
 
-function expectUserToBeLoggedIn(array $attributes = [])
+function expectUserToBeLoggedIn(array $attributes = [], ?string $guard = null)
 {
-    expect(auth()->check())->toBeTrue();
+    expect(auth($guard)->check())->toBeTrue();
 
     foreach ($attributes as $name => $value) {
-        expect(auth()->user()->$name)->toBe($value);
+        expect(auth($guard)->user()->{$name})->toBe($value);
     }
 }
 
-function expectNotLoggedIn()
+function expectNotLoggedIn(?string $guard = null)
 {
-    expect(auth()->check())->toBeFalse();
+    expect(auth($guard)->check())->toBeFalse();
 }
