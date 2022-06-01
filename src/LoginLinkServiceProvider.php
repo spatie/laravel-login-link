@@ -26,6 +26,6 @@ class LoginLinkServiceProvider extends PackageServiceProvider
 
         Route::post('laravel-login-link-login', $controller)
             ->name('loginLinkLogin')
-            ->middleware(config('login-link.middleware'));
+            ->middleware(config('login-link.middleware', ['web']));
     }
 }
