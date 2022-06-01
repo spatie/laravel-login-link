@@ -118,7 +118,7 @@ This component will render a link that, when clicked, will log you in. By defaul
 You can also specify the redirect URL on the component itself:
 
 ```blade
-<x-login-link redirect-url={{ route('dashboard') }}  />
+<x-login-link redirect-url="{{ route('dashboard') }}"  />
 ```
 
 ### Specifying the user model to log in
