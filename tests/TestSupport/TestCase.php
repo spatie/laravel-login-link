@@ -42,6 +42,8 @@ class TestCase extends Orchestra
     {
         config()->set('database.default', 'testing');
 
+        config()->set('app.key', 'base64:LjpSHzPr1BBeuRWrlUcN2n2OWZ36o8+VpTLZdHcdG7Q=');
+
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
