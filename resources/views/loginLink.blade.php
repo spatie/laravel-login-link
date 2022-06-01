@@ -3,8 +3,9 @@
         @csrf
 
         <input type="hidden" name="email" value="{{ $email }}">
-        <input type="hidden" name="key" value="{{  $key }}">
-        <input type="hidden" name="redirect_url" value="{{  $redirectUrl }}">
+        <input type="hidden" name="key" value="{{ $key }}">
+        <input type="hidden" name="redirect_url" value="{{ $redirectUrl }}">
+        <input type="hidden" name="guard" value="{{ $guard }}">
         <input type="hidden" name="user_attributes" value=@json($userAttributes)>
 
         @include('login-link::loginLinkButton')

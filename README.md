@@ -159,6 +159,14 @@ Here's how you can create a red, underlined link (when using Tailwind CSS).
 <x-login-link class="underline text-red-500">
 ```
 
+### Specifying the login guard
+
+By default, the package will use the default guard. You can specify another guard.
+
+```blade
+<x-login-link guard="admin">
+```
+
 ### Automatic user creation
 
 If the user that needs to be logged in does not exist, the package will use the factory of your user model to create the user, and log that new user in.

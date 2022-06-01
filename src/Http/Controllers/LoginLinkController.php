@@ -17,7 +17,7 @@ class LoginLinkController
 
         $authenticatable = $this->getAuthenticatable($request);
 
-        $this->performLogin($authenticatable);
+        $this->performLogin($request->guard, $authenticatable);
 
         $redirectUrl = $this->getRedirectUrl($request);
 
@@ -37,7 +37,7 @@ class LoginLinkController
     {
         $attributes = $this->getUserAttributes($request);
 
-        $authenticatableClass = $this->getAuthenticatableClass();
+        $authenticatableClass = $this->getAuthenticatableClass($request->guard);
 
         $user = $authenticatableClass::query()
             ->when(count($attributes), fn (Builder $query) => $query->where($attributes))
@@ -54,9 +54,9 @@ class LoginLinkController
         return $this->createUser($authenticatableClass, $attributes);
     }
 
-    protected function performLogin(Authenticatable $authenticatable): void
+    protected function performLogin(?string $guard, Authenticatable $authenticatable): void
     {
-        auth()->login($authenticatable);
+        auth($guard)->login($authenticatable);
     }
 
     protected function getUserAttributes(LoginLinkRequest $request): array
@@ -75,7 +75,7 @@ class LoginLinkController
     protected function getAuthenticatableIdentifier(LoginLinkRequest $request): ?array
     {
         if ($request->key) {
-            $userClass = new ($this->getAuthenticatableClass());
+            $userClass = new ($this->getAuthenticatableClass($request->guard));
 
             return [
                 'attribute' => ($userClass)->getKeyName(),
@@ -93,10 +93,15 @@ class LoginLinkController
         return null;
     }
 
-    protected function getAuthenticatableClass(): string
+    protected function getAuthenticatableClass(?string $guard): string
     {
+        $provider = $guard === null
+            ? config('auth.guards.web.provider')
+            : config("auth.guards.{$guard}.provider");
+
+
         return config('login-link.user_model')
-            ?? config('auth.providers.users.model')
+            ?? config("auth.providers.{$provider}.model")
             ?? throw InvalidUserClass::notFound();
     }
 

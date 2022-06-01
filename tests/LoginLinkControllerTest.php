@@ -1,6 +1,7 @@
 <?php
 
 use function Pest\Laravel\post;
+use Spatie\LoginLink\Tests\TestSupport\Models\Admin;
 use Spatie\LoginLink\Tests\TestSupport\Models\User;
 
 it('will create and login a user', function () {
@@ -8,6 +9,25 @@ it('will create and login a user', function () {
 
     expectUserToBeLoggedIn();
     expect(User::count())->toBe(1);
+});
+
+it('will create and login a user on a specific guard', function () {
+    config()->set('auth.guards.admin', [
+        'driver' => 'session',
+        'provider' => 'admins',
+    ]);
+    config()->set('auth.providers.admins', [
+        'driver' => 'eloquent',
+        'model' => Admin::class,
+    ]);
+    config()->set('login-link.user_model', Admin::class);
+
+    $data = ['guard' => 'admin'];
+
+    post(route('loginLinkLogin', $data))->assertRedirect();
+
+    expectUserToBeLoggedIn([], 'admin');
+    expect(Admin::count())->toBe(1);
 });
 
 it('will not create a new user if one already exists', function () {
