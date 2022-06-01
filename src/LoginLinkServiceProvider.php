@@ -7,7 +7,6 @@ use Illuminate\Support\Facades\Route;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 use Spatie\LoginLink\Http\Components\LoginLinkComponent;
-use Spatie\LoginLink\Http\Controllers\LoginLinkController;
 
 class LoginLinkServiceProvider extends PackageServiceProvider
 {
