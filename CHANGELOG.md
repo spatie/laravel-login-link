@@ -2,6 +2,10 @@
 
 All notable changes to `laravel-login-link` will be documented in this file.
 
+## 1.0.0 - 2022-05-30
+
+- initial release
+
 ## 0.0.3 - 2022-05-28
 
 **Full Changelog**: https://github.com/spatie/laravel-login-link/compare/0.0.2...0.0.3
