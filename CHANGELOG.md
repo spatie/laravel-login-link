@@ -2,6 +2,20 @@
 
 All notable changes to `laravel-login-link` will be documented in this file.
 
+## 1.1.1 - 2022-07-14
+
+### What's Changed
+
+- Bump dependabot/fetch-metadata from 1.3.1 to 1.3.3 by @dependabot in https://github.com/spatie/laravel-login-link/pull/9
+- Redirect users to the requested page after login by @VenomXL in https://github.com/spatie/laravel-login-link/pull/11
+
+### New Contributors
+
+- @dependabot made their first contribution in https://github.com/spatie/laravel-login-link/pull/9
+- @VenomXL made their first contribution in https://github.com/spatie/laravel-login-link/pull/11
+
+**Full Changelog**: https://github.com/spatie/laravel-login-link/compare/1.1.0...1.1.1
+
 ## 1.1.0 - 2022-06-01
 
 ### What's Changed
