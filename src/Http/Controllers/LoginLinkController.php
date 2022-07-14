@@ -120,6 +120,6 @@ class LoginLinkController
             return route($routeName);
         }
 
-        return '/';
+        return redirect()->intended()->getTargetUrl();
     }
 }
