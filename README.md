@@ -194,6 +194,10 @@ Out of the box, the login link will only work in a local environment. If you wan
 
 Beware however, that you should never display login links in any environment that is publicly reachable, as it will allow anyone to log in.
 
+## How the package works under the hood
+
+[Povilas Korop](https://twitter.com/povilaskorop) of [Laravel Daily](https://laraveldaily.com) made [a nice video on the internals of the package](https://www.youtube.com/watch?v=TN0NKHVeWGc).
+
 ## Testing
 
 ```bash
