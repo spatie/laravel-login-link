@@ -1,6 +1,7 @@
 <?php
 
 use function Pest\Laravel\post;
+
 use Spatie\LoginLink\Tests\TestSupport\Models\Admin;
 use Spatie\LoginLink\Tests\TestSupport\Models\User;
 
