@@ -24,7 +24,7 @@ return [
 
     /*
      * After a login link is clicked, we'll redirect the user to this route.
-     * If it is set to `null` , we'll redirect to the user to their last intended/requested url.
+     * If it is set to `null`, we'll redirect the user to their last intended/requested url.
      * You can set it to `/`, for making redirect to the root page.
      */
     'redirect_route_name' => null,

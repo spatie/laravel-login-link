@@ -35,6 +35,10 @@ class LoginLinkController
 
     protected function getAuthenticatable(LoginLinkRequest $request): Authenticatable
     {
+        if (! config('login-link.automatically_create_missing_users')) {
+            throw DidNotFindUserToLogIn::make();
+        }
+
         $attributes = $this->getUserAttributes($request);
 
         $authenticatableClass = $this->getAuthenticatableClass($request->guard);
@@ -45,10 +49,6 @@ class LoginLinkController
 
         if ($user) {
             return $user;
-        }
-
-        if (! config('login-link.automatically_create_missing_users')) {
-            throw DidNotFindUserToLogIn::make();
         }
 
         return $this->createUser($authenticatableClass, $attributes);
@@ -98,7 +98,6 @@ class LoginLinkController
         $provider = $guard === null
             ? config('auth.guards.web.provider')
             : config("auth.guards.{$guard}.provider");
-
 
         return config('login-link.user_model')
             ?? config("auth.providers.{$provider}.model")
