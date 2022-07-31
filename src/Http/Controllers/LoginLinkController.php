@@ -112,14 +112,10 @@ class LoginLinkController
 
     protected function getRedirectUrl(LoginLinkRequest $request): string
     {
-        if ($request->redirect_url) {
-            return $request->redirect_url;
-        }
-
         if ($routeName = config('login-link.redirect_route_name')) {
             return route($routeName);
         }
 
-        return redirect()->intended()->getTargetUrl();
+        return $request->redirect_url ?? redirect()->intended()->getTargetUrl();
     }
 }
