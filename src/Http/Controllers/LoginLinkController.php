@@ -99,7 +99,6 @@ class LoginLinkController
             ? config('auth.guards.web.provider')
             : config("auth.guards.{$guard}.provider");
 
-
         return config('login-link.user_model')
             ?? config("auth.providers.{$provider}.model")
             ?? throw InvalidUserClass::notFound();

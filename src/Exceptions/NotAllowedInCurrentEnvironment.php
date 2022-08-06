@@ -6,7 +6,7 @@ use Exception;
 
 class NotAllowedInCurrentEnvironment extends Exception
 {
-    public static function make(array $allowedEnvironments)
+    public static function make(array $allowedEnvironments): self
     {
         $currentEnvironment = app()->environment();
 
