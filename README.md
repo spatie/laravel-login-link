@@ -134,7 +134,7 @@ The package will log in the first user in the table. You customize that by passi
 Alternatively, you can specify the primary key of the user (in most cases this will be the `id`)
 
 ```blade
-<x-login-link id="123"  />
+<x-login-link key="123"  />
 ```
 
 You can also specify the attributes of the user that needs to be logged in.
