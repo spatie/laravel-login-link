@@ -2,6 +2,8 @@
 
 use function Pest\Laravel\post;
 
+use Spatie\LoginLink\Tests\TestSupport\Actions\TestCreateUserAction;
+
 use Spatie\LoginLink\Tests\TestSupport\Models\Admin;
 use Spatie\LoginLink\Tests\TestSupport\Models\User;
 
@@ -158,4 +160,14 @@ it('will throw an exception when no user class can be determined', function () {
     config()->set('auth.providers.users.model', null);
 
     post(route('loginLinkLogin'))->assertStatus(500);
+});
+
+it('accepts a custom create user action', function () {
+    config()->set('login-link.create_user_action', TestCreateUserAction::class);
+
+    post(route('loginLinkLogin'))->assertRedirect();
+
+    expectUserToBeLoggedIn([
+        'email' => TestCreateUserAction::EMAIL,
+    ]);
 });

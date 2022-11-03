@@ -4,6 +4,8 @@ namespace Spatie\LoginLink\Http\Controllers;
 
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Builder;
+use Spatie\LoginLink\Actions\CreateUserAction;
+use Spatie\LoginLink\Actions\CreateUserActionInterface;
 use Spatie\LoginLink\Exceptions\DidNotFindUserToLogIn;
 use Spatie\LoginLink\Exceptions\InvalidUserClass;
 use Spatie\LoginLink\Exceptions\NotAllowedInCurrentEnvironment;
@@ -106,7 +108,10 @@ class LoginLinkController
 
     protected function createUser(string $authenticatableClass, array $attributes): Authenticatable
     {
-        return $authenticatableClass::factory()->create($attributes);
+        /** @var CreateUserActionInterface $createUserClass */
+        $createUserClass = app(config('login-link.create_user_action', CreateUserAction::class));
+
+        return $createUserClass->execute($authenticatableClass, $attributes);
     }
 
     protected function getRedirectUrl(LoginLinkRequest $request): string

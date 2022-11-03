@@ -1,5 +1,6 @@
 <?php
 
+use Spatie\LoginLink\Actions\CreateUserAction;
 use Spatie\LoginLink\Http\Controllers\LoginLinkController;
 
 return [
@@ -35,6 +36,13 @@ return [
      * override this class.
      */
     'login_link_controller' => LoginLinkController::class,
+
+    /*
+     * The action class to use to create a new user.
+     *
+     * Should implement \Spatie\LoginLink\Actions\CreateUserActionInterface
+     */
+    'create_user_action' => CreateUserAction::class,
 
     /*
      * This middleware will be applied on the route

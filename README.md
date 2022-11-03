@@ -90,6 +90,13 @@ return [
     'login_link_controller' => LoginLinkController::class,
 
     /*
+     * The action class to use to create a new user.
+     * 
+     * Should implement \Spatie\LoginLink\Actions\CreateUserActionInterface
+     */
+    'create_user_action' => CreateUserAction::class,
+
+    /*
      * This middleware will be applied on the route
      * that logs in a user via a link.
      */
@@ -172,6 +179,8 @@ By default, the package will use the default guard. You can specify another guar
 If the user that needs to be logged in does not exist, the package will use the factory of your user model to create the user, and log that new user in.
 
 If you don't want this behaviour, set `automatically_create_missing_users` in the `local-link` config file to `false`.
+
+You can customize how the user is created by providing a custom action through the `create_user_action` configuration value.
 
 ### Usage with Vue / React / ...
 
