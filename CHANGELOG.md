@@ -2,6 +2,22 @@
 
 All notable changes to `laravel-login-link` will be documented in this file.
 
+## 1.1.2 - 2023-01-25
+
+### What's Changed
+
+- minor improvements by @chapeupreto in https://github.com/spatie/laravel-login-link/pull/12
+- Update reference of "id" attribute to "key" in README.md by @liamja in https://github.com/spatie/laravel-login-link/pull/17
+- Bump dependabot/fetch-metadata from 1.3.3 to 1.3.4 by @dependabot in https://github.com/spatie/laravel-login-link/pull/18
+- Bump dependabot/fetch-metadata from 1.3.4 to 1.3.5 by @dependabot in https://github.com/spatie/laravel-login-link/pull/20
+
+### New Contributors
+
+- @chapeupreto made their first contribution in https://github.com/spatie/laravel-login-link/pull/12
+- @liamja made their first contribution in https://github.com/spatie/laravel-login-link/pull/17
+
+**Full Changelog**: https://github.com/spatie/laravel-login-link/compare/1.1.1...1.1.2
+
 ## 1.1.1 - 2022-07-14
 
 ### What's Changed
