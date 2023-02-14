@@ -194,7 +194,7 @@ import LoginLink from '@/../../vendor/spatie/laravel-login-link/resources/js/log
 
 // or
 
-<LoginLink v-if="$page.props.environment == 'local'" label="Login as l.longo@ambita.it" class="pb-3 text-red-500" :redirect-url="route('dashboard')" />
+<LoginLink v-if="$page.props.environment == 'local'" label="Login as user@example.com" class="pb-3 text-red-500" :redirect-url="route('dashboard')" />
 ```
 
 ### Usage with React / Js / ...
