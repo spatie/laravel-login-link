@@ -170,9 +170,25 @@ If the user that needs to be logged in does not exist, the package will use the 
 
 If you don't want this behaviour, set `automatically_create_missing_users` in the `local-link` config file to `false`.
 
-### Usage with Vue / React / ...
+### Usage with Vue
 
-The package doesn't come with any JS component out of the box. When you use a JS front end framework to render your views, you can still make use of the package.
+The package has a built-in component to support Vue. The props are the same of blade component.
+
+```vue
+import LoginLink from '@/../../vendor/spatie/laravel-login-link/resources/js/login-link.vue';
+
+<LoginLink />
+
+// or
+
+<LoginLink label="Login as l.longo@ambita.it" class="pb-3 text-red-500" :redirect-url="route('dashboard')" />
+```
+
+The component will do the rest.
+
+### Usage with React / Js / ...
+
+The package comes with Vue support only. When you use any other JS front end framework to render your views, you can still make use of the package.
 
 You should send a `POST` request to `/laravel-login-link-login`. If you don't give it any payload, then it will log in the first user in your users table. If there is no user, it will be created.
 
