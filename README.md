@@ -184,7 +184,23 @@ import LoginLink from '@/../../vendor/spatie/laravel-login-link/resources/js/log
 <LoginLink label="Login as l.longo@ambita.it" class="pb-3 text-red-500" :redirect-url="route('dashboard')" />
 ```
 
-The component will do the rest.
+Due to the nature of JavaScript, it isn't possible to know what's the environment, so you should create your logic to show or hide the component.
+
+If you use Inertia, it is easy to do it using the shared page props. You can edit the `HandleInertiaRequests` middleware like so:
+```php
+public function share(Request $request): array
+{
+    return array_merge(parent::share($request), [
+        'environment' => app()->environment(),
+        // ...
+    ]);
+}
+```
+
+So, in the Vue component:
+```vue
+<LoginLink v-if="$page.props.environment == 'local'" />
+```
 
 ### Usage with React / Js / ...
 
