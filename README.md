@@ -170,23 +170,11 @@ If the user that needs to be logged in does not exist, the package will use the 
 
 If you don't want this behaviour, set `automatically_create_missing_users` in the `local-link` config file to `false`.
 
-### Usage with Vue
+### Usage with Vue and InertiaJS
 
-The package has a built-in component to support Vue (requires (Ziggy)[https://github.com/tighten/ziggy]). The props are the same of blade component.
+The package has a built-in component to support Vue and InertiaJS. The props are the same of blade component.
 
-```vue
-import LoginLink from '@/../../vendor/spatie/laravel-login-link/resources/js/login-link.vue';
-
-<LoginLink />
-
-// or
-
-<LoginLink label="Login as l.longo@ambita.it" class="pb-3 text-red-500" :redirect-url="route('dashboard')" />
-```
-
-Due to the nature of JavaScript, it isn't possible to know what's the environment, so you should create your logic to show or hide the component.
-
-If you use Inertia, it is easy to do it using the shared page props. You can edit the `HandleInertiaRequests` middleware like so:
+Edit the `HandleInertiaRequests` middleware like so:
 ```php
 public function share(Request $request): array
 {
@@ -197,9 +185,16 @@ public function share(Request $request): array
 }
 ```
 
-So, in the Vue component:
+So, if you need to show the button only in your local environment, use the component like so:
+
 ```vue
+import LoginLink from '@/../../vendor/spatie/laravel-login-link/resources/js/login-link.vue';
+
 <LoginLink v-if="$page.props.environment == 'local'" />
+
+// or
+
+<LoginLink v-if="$page.props.environment == 'local'" label="Login as l.longo@ambita.it" class="pb-3 text-red-500" :redirect-url="route('dashboard')" />
 ```
 
 ### Usage with React / Js / ...
