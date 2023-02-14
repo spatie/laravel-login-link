@@ -172,7 +172,7 @@ If you don't want this behaviour, set `automatically_create_missing_users` in th
 
 ### Usage with Vue
 
-The package has a built-in component to support Vue. The props are the same of blade component.
+The package has a built-in component to support Vue (requires (Ziggy)[https://github.com/tighten/ziggy]). The props are the same of blade component.
 
 ```vue
 import LoginLink from '@/../../vendor/spatie/laravel-login-link/resources/js/login-link.vue';
