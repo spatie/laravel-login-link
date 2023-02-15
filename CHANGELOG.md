@@ -2,6 +2,19 @@
 
 All notable changes to `laravel-login-link` will be documented in this file.
 
+## 1.1.3 - 2023-02-15
+
+### What's Changed
+
+- Bump dependabot/fetch-metadata from 1.3.5 to 1.3.6 by @dependabot in https://github.com/spatie/laravel-login-link/pull/21
+- Add Vue+Inertia support by @masterix21 in https://github.com/spatie/laravel-login-link/pull/22
+
+### New Contributors
+
+- @masterix21 made their first contribution in https://github.com/spatie/laravel-login-link/pull/22
+
+**Full Changelog**: https://github.com/spatie/laravel-login-link/compare/1.1.2...1.1.3
+
 ## 1.1.2 - 2023-01-25
 
 ### What's Changed
