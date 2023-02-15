@@ -170,9 +170,36 @@ If the user that needs to be logged in does not exist, the package will use the 
 
 If you don't want this behaviour, set `automatically_create_missing_users` in the `local-link` config file to `false`.
 
-### Usage with Vue / React / ...
+### Usage with Vue and InertiaJS
 
-The package doesn't come with any JS component out of the box. When you use a JS front end framework to render your views, you can still make use of the package.
+The package has a built-in component to support Vue and InertiaJS. The props are the same of blade component.
+
+Edit the `HandleInertiaRequests` middleware like so:
+```php
+public function share(Request $request): array
+{
+    return array_merge(parent::share($request), [
+        'environment' => app()->environment(),
+        // ...
+    ]);
+}
+```
+
+So, if you need to show the button only in your local environment, use the component like so:
+
+```vue
+import LoginLink from '@/../../vendor/spatie/laravel-login-link/resources/js/login-link.vue';
+
+<LoginLink v-if="$page.props.environment == 'local'" />
+
+// or
+
+<LoginLink v-if="$page.props.environment == 'local'" label="Login as user@example.com" class="pb-3 text-red-500" :redirect-url="route('dashboard')" />
+```
+
+### Usage with React / Js / ...
+
+The package comes with Vue support only. When you use any other JS front end framework to render your views, you can still make use of the package.
 
 You should send a `POST` request to `/laravel-login-link-login`. If you don't give it any payload, then it will log in the first user in your users table. If there is no user, it will be created.
 
