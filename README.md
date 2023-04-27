@@ -1,8 +1,8 @@
 # Quickly login to your local environment
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/spatie/laravel-login-link.svg?style=flat-square)](https://packagist.org/packages/spatie/laravel-login-link)
-[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/spatie/laravel-login-link/run-tests?label=tests)](https://github.com/spatie/laravel-login-link/actions?query=workflow%3Arun-tests+branch%3Amain)
-[![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/spatie/laravel-login-link/Check%20&%20fix%20styling?label=code%20style)](https://github.com/spatie/laravel-login-link/actions?query=workflow%3A"Check+%26+fix+styling"+branch%3Amain)
+[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/spatie/laravel-login-link/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/spatie/laravel-login-link/actions?query=workflow%3Arun-tests+branch%3Amain)
+[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/spatie/laravel-login-link/php-cs-fixer.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/spatie/laravel-login-link/actions?query=workflow%3A"Check+%26+fix+styling"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/spatie/laravel-login-link.svg?style=flat-square)](https://packagist.org/packages/spatie/laravel-login-link)
 
 When developing an app that has an admin section (or any non-public section), you'll likely seed test users to login. In large teams that work on many different apps it can be cumbersome to keep track of the right credentials. Is the user account "yourname@company.com", or "test@company.com", or even "admin@company.com"? Is that password "password", or "secret", or something is else? How do I login with a user that has a different role?
