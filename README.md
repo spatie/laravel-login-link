@@ -26,6 +26,10 @@ Here's what that might look like in the browser:
 
 It is meant for local development, and probably shouldn't be used in any publicly reachable environment.
 
+## Are you a visual learner?
+
+Here's [a Laracasts video that demonstrates Laravel Login Link](https://laracasts.com/series/small-laravel-packages-big-impact/episodes/2) made by Christoph Rumpel.
+
 ## Support us
 
 [<img src="https://github-ads.s3.eu-central-1.amazonaws.com/laravel-login-link.jpg?t=1" width="419px" />](https://spatie.be/github-ad-click/laravel-login-link)
