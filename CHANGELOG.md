@@ -2,6 +2,23 @@
 
 All notable changes to `laravel-login-link` will be documented in this file.
 
+## 1.2.0 - 2024-03-04
+
+### What's Changed
+
+* Bump dependabot/fetch-metadata from 1.3.6 to 1.4.0 by @dependabot in https://github.com/spatie/laravel-login-link/pull/24
+* docs: fix Shields badges by @owenvoke in https://github.com/spatie/laravel-login-link/pull/25
+* Bump dependabot/fetch-metadata from 1.4.0 to 1.5.1 by @dependabot in https://github.com/spatie/laravel-login-link/pull/26
+* Bump dependabot/fetch-metadata from 1.5.1 to 1.6.0 by @dependabot in https://github.com/spatie/laravel-login-link/pull/27
+* Laravel 11.x Compatibility by @laravel-shift in https://github.com/spatie/laravel-login-link/pull/32
+
+### New Contributors
+
+* @owenvoke made their first contribution in https://github.com/spatie/laravel-login-link/pull/25
+* @laravel-shift made their first contribution in https://github.com/spatie/laravel-login-link/pull/32
+
+**Full Changelog**: https://github.com/spatie/laravel-login-link/compare/1.1.3...1.2.0
+
 ## 1.1.3 - 2023-02-15
 
 ### What's Changed
