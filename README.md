@@ -79,7 +79,8 @@ return [
 
     /*
      * After a login link is clicked, we'll redirect the user to this route.
-     * If it is set to `null` , we'll redirect to `/`.
+     * If it is set to `null`, we'll redirect the user to their last intended/requested url.
+     * You can set it to `/`, for making redirect to the root page.
      */
     'redirect_route_name' => null,
 
@@ -114,8 +115,8 @@ To render a login link, simply add the `x-login-link` Blade component to your vi
 @endenv
 ```
 
-This component will render a link that, when clicked, will log you in. By default, it will redirect you to  `/`, but you can customize that by specifying a route name in the `redirect_route_name` of the `login-link` config file.
-
+This component will render a link that, when clicked, will log you in. By default, it will 
+redirect you to the last intended/requested url, but you can customize that by specifying a route name in the `redirect_route_name` of the `login-link` config file.
 You can also specify the redirect URL on the component itself:
 
 ```blade
