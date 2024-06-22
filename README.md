@@ -175,9 +175,9 @@ If the user that needs to be logged in does not exist, the package will use the 
 
 If you don't want this behaviour, set `automatically_create_missing_users` in the `local-link` config file to `false`.
 
-### Usage with Vue and InertiaJS
+### Usage with Vue or React and InertiaJS
 
-The package has a built-in component to support Vue and InertiaJS. The props are the same of blade component.
+The package has a built-in component to support Vue or React and InertiaJS. The props are the same of blade component.
 
 Edit the `HandleInertiaRequests` middleware like so:
 ```php
@@ -190,21 +190,43 @@ public function share(Request $request): array
 }
 ```
 
-So, if you need to show the button only in your local environment, use the component like so:
+So, if you need to show the button only in your local environment, use the component like so for Vue :
 
 ```vue
 import LoginLink from '@/../../vendor/spatie/laravel-login-link/resources/js/login-link.vue';
 
-<LoginLink v-if="$page.props.environment == 'local'" />
+<LoginLink v-if="$page.props.environment === 'local'" />
 
 // or
 
-<LoginLink v-if="$page.props.environment == 'local'" label="Login as user@example.com" class="pb-3 text-red-500" :redirect-url="route('dashboard')" />
+<LoginLink v-if="$page.props.environment === 'local'" label="Login as user@example.com" class="pb-3 text-red-500" :redirect-url="route('dashboard')" />
 ```
 
-### Usage with React / Js / ...
+For React, use the component like so:
 
-The package comes with Vue support only. When you use any other JS front end framework to render your views, you can still make use of the package.
+```jsx
+import LoginLink from '@/../../vendor/spatie/laravel-login-link/resources/js/LoginLink';
+// or for TypeScript, uncomment the following line
+//import LoginLink from '@/../../vendor/spatie/laravel-login-link/resources/ts/LoginLink';
+
+{page.props.environment === 'local' && (
+    <LoginLink />
+)}
+
+// or
+
+{page.props.environment === 'local' && (
+    <LoginLink
+        label="Login as user@example.com"
+        className="pb-3 text-red-500"
+        redirect-url="route('dashboard')"
+    />
+)}
+```
+
+### Usage with Js / ...
+
+The package comes with Vue and React support only. When you use any other JS front end framework to render your views, you can still make use of the package.
 
 You should send a `POST` request to `/laravel-login-link-login`. If you don't give it any payload, then it will log in the first user in your users table. If there is no user, it will be created.
 
