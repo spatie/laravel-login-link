@@ -2,6 +2,21 @@
 
 All notable changes to `laravel-login-link` will be documented in this file.
 
+## 1.3.0 - 2024-07-10
+
+### What's Changed
+
+* Update README.md by @otherpaco in https://github.com/spatie/laravel-login-link/pull/35
+* Bump dependabot/fetch-metadata from 1.6.0 to 2.1.0 by @dependabot in https://github.com/spatie/laravel-login-link/pull/34
+* Add react support (jsx and tsx) by @fouteox in https://github.com/spatie/laravel-login-link/pull/36
+
+### New Contributors
+
+* @otherpaco made their first contribution in https://github.com/spatie/laravel-login-link/pull/35
+* @fouteox made their first contribution in https://github.com/spatie/laravel-login-link/pull/36
+
+**Full Changelog**: https://github.com/spatie/laravel-login-link/compare/1.2.0...1.3.0
+
 ## 1.2.0 - 2024-03-04
 
 ### What's Changed
