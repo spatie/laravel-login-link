@@ -175,7 +175,7 @@ If the user that needs to be logged in does not exist, the package will use the 
 
 If you don't want this behaviour, set `automatically_create_missing_users` in the `local-link` config file to `false`.
 
-### Usage with Vue or React and InertiaJS
+### Usage with Vue or React and Inertia.js
 
 The package has a built-in component to support Vue or React and InertiaJS. The props are the same of blade component.
 
