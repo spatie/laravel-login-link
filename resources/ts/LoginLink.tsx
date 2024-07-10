@@ -20,7 +20,7 @@ const LoginLink: React.FC<LoginLinkProps> = ({
     redirectUrl = null,
     userAttributes = null,
 }) => {
-    const submit = (event: FormEvent) => {
+    function handleSubmit(event: FormEvent) {
         event.preventDefault();
         router.post(route('loginLinkLogin'), {
             email: email,
