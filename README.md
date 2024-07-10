@@ -219,7 +219,7 @@ import LoginLink from '@/../../vendor/spatie/laravel-login-link/resources/js/Log
     <LoginLink
         label="Login as user@example.com"
         className="pb-3 text-red-500"
-        redirect-url="route('dashboard')"
+        redirectUrl={route('dashboard')}
     />
 )}
 ```
