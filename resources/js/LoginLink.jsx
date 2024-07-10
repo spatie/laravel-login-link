@@ -1,7 +1,7 @@
 import React from 'react';
 import { router } from '@inertiajs/react'
 
-const LoginLink = ({
+export default function LoginLink({
     className = 'underline',
     email = null,
     guard = null,
@@ -9,7 +9,7 @@ const LoginLink = ({
     label = 'Login',
     redirectUrl = null,
     userAttributes = null,
-}) => {
+}) {
     const submit = (event) => {
         event.preventDefault();
         router.post(route('loginLinkLogin'), {
@@ -29,5 +29,3 @@ const LoginLink = ({
         </form>
     );
 };
-
-export default LoginLink;

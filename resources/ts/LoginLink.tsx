@@ -11,7 +11,7 @@ interface LoginLinkProps {
     userAttributes?: Record<string, any>;
 }
 
-const LoginLink: React.FC<LoginLinkProps> = ({
+export default function LoginLink({
     className = 'underline',
     email = null,
     guard = null,
@@ -19,8 +19,8 @@ const LoginLink: React.FC<LoginLinkProps> = ({
     label = 'Login',
     redirectUrl = null,
     userAttributes = null,
-}) => {
-    function handleSubmit(event: FormEvent) {
+}: LoginLinkProps) {
+    function submit(event: FormEvent) {
         event.preventDefault();
         router.post(route('loginLinkLogin'), {
             email: email,
@@ -39,5 +39,3 @@ const LoginLink: React.FC<LoginLinkProps> = ({
         </form>
     );
 };
-
-export default LoginLink;
