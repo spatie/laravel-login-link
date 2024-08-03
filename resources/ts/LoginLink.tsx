@@ -3,12 +3,12 @@ import { router } from '@inertiajs/react'
 
 interface LoginLinkProps {
     className?: string;
-    email?: string;
-    guard?: string;
-    keyId?: string;
+    email?: string | null;
+    guard?: string | null;
+    keyId?: string | null;
     label?: string;
-    redirectUrl?: string;
-    userAttributes?: Record<string, any>;
+    redirectUrl?: string | null;
+    userAttributes?: Record<string, any> | null;
 }
 
 export default function LoginLink({
