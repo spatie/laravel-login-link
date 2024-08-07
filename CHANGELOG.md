@@ -2,6 +2,15 @@
 
 All notable changes to `laravel-login-link` will be documented in this file.
 
+## 1.3.1 - 2024-08-07
+
+### What's Changed
+
+* Bump dependabot/fetch-metadata from 2.1.0 to 2.2.0 by @dependabot in https://github.com/spatie/laravel-login-link/pull/38
+* Fix function style by @fouteox in https://github.com/spatie/laravel-login-link/pull/37
+
+**Full Changelog**: https://github.com/spatie/laravel-login-link/compare/1.3.0...1.3.1
+
 ## 1.3.0 - 2024-07-10
 
 ### What's Changed
