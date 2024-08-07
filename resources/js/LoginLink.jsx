@@ -10,7 +10,7 @@ export default function LoginLink({
     redirectUrl = null,
     userAttributes = null,
 }) {
-    const submit = (event) => {
+    function submit(event) {
         event.preventDefault();
         router.post(route('loginLinkLogin'), {
             email: email,
