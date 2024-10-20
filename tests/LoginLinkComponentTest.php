@@ -34,6 +34,16 @@ it('can render a login link with custom user attributes', function () {
     assertMatchesHtmlSnapshot($html);
 });
 
+it('can render a login link with custom user attributes with a space from a variable', function () {
+    $role = 'senior admin';
+    $blade = <<<END
+    <x-login-link :user-attributes="['role' => '$role']" />'
+    END;
+    $html = Blade::render($blade);
+
+    assertMatchesHtmlSnapshot($html);
+});
+
 it('can render a login link with a specific redirect url', function () {
     $html = Blade::render('<x-login-link redirect-url="{{ route(\'customUrlRouteName\') }}" />');
 
