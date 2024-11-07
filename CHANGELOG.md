@@ -2,6 +2,18 @@
 
 All notable changes to `laravel-login-link` will be documented in this file.
 
+## 1.4.0 - 2024-11-07
+
+### What's Changed
+
+* Blade: use json_encode instead of @json by @yparitcher in https://github.com/spatie/laravel-login-link/pull/39
+
+### New Contributors
+
+* @yparitcher made their first contribution in https://github.com/spatie/laravel-login-link/pull/39
+
+**Full Changelog**: https://github.com/spatie/laravel-login-link/compare/1.3.1...1.4.0
+
 ## 1.3.1 - 2024-08-07
 
 ### What's Changed
