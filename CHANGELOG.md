@@ -2,6 +2,18 @@
 
 All notable changes to `laravel-login-link` will be documented in this file.
 
+## 1.5.0 - 2024-12-09
+
+### What's Changed
+
+* Add verification of allowed hosts in login-link by @davidjr82 in https://github.com/spatie/laravel-login-link/pull/42
+
+### New Contributors
+
+* @davidjr82 made their first contribution in https://github.com/spatie/laravel-login-link/pull/42
+
+**Full Changelog**: https://github.com/spatie/laravel-login-link/compare/1.4.0...1.5.0
+
 ## 1.4.0 - 2024-11-07
 
 ### What's Changed
