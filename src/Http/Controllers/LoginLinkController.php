@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Spatie\LoginLink\Exceptions\DidNotFindUserToLogIn;
 use Spatie\LoginLink\Exceptions\InvalidUserClass;
 use Spatie\LoginLink\Exceptions\NotAllowedInCurrentEnvironment;
+use Spatie\LoginLink\Exceptions\NotAllowedInCurrentHost;
 use Spatie\LoginLink\Http\Requests\LoginLinkRequest;
 
 class LoginLinkController
@@ -14,6 +15,8 @@ class LoginLinkController
     public function __invoke(LoginLinkRequest $request)
     {
         $this->ensureAllowedEnvironment();
+
+        $this->ensureAllowedHost($request);
 
         $authenticatable = $this->getAuthenticatable($request);
 
@@ -30,6 +33,16 @@ class LoginLinkController
 
         if (! app()->environment($allowedEnvironments)) {
             throw NotAllowedInCurrentEnvironment::make($allowedEnvironments);
+        }
+    }
+
+    protected function ensureAllowedHost(LoginLinkRequest $request): void
+    {
+        $allowedHosts = config('login-link.allowed_hosts');
+        $currentHost = $request->getHost();
+
+        if (! in_array($currentHost, $allowedHosts)) {
+            throw NotAllowedInCurrentHost::make($currentHost, $allowedHosts);
         }
     }
 
