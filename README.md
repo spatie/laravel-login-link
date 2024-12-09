@@ -20,6 +20,15 @@ In your login view, you can add the `x-login-link` component to show the login l
 @endenv
 ```
 
+By default, only localhost is allowed. If you want to allow other hosts, you can add them to the `allowed_hosts` config key.
+
+```php
+'allowed_hosts' => [
+    'localhost',
+    'example.com',
+],
+```
+
 Here's what that might look like in the browser:
 
 <img style="width: 500px" alt="screenshot" src="https://github.com/spatie/laravel-login-link/blob/main/docs/login.png?raw=true" />
@@ -40,7 +49,7 @@ We highly appreciate you sending us a postcard from your hometown, mentioning wh
 
 ## Installation
 
-You can install the package via composer. 
+You can install the package via composer.
 
 ```bash
 composer require spatie/laravel-login-link
@@ -63,6 +72,12 @@ return [
      * other environments, an exception will be thrown.
      */
     'allowed_environments' => ['local'],
+
+    /*
+     * Login links will only work in these hosts. In all
+     * other hosts, an exception will be thrown.
+     */
+    'allowed_hosts' => ['localhost'],
 
     /*
      * The package will automatically create a user model when trying
@@ -115,7 +130,7 @@ To render a login link, simply add the `x-login-link` Blade component to your vi
 @endenv
 ```
 
-This component will render a link that, when clicked, will log you in. By default, it will 
+This component will render a link that, when clicked, will log you in. By default, it will
 redirect you to the last intended/requested url, but you can customize that by specifying a route name in the `redirect_route_name` of the `login-link` config file.
 You can also specify the redirect URL on the component itself:
 
@@ -244,6 +259,12 @@ Since this is a POST request, make sure to pass a CSRF token as well.
 Out of the box, the login link will only work in a local environment. If you want to use it other environments, set the `allowed_environments` key of the `login-link` config file to the names of those environments.
 
 Beware however, that you should never display login links in any environment that is publicly reachable, as it will allow anyone to log in.
+
+### Usage on other hosts
+
+Out of the box, the login link will only work on localhost. If you want to use it on other hosts, set the `allowed_hosts` key of the `login-link` config file to the names of those hosts.
+
+Note, however, that you should never display login links on any host that is publicly reachable, as it will allow anyone to log in.
 
 ## How the package works under the hood
 

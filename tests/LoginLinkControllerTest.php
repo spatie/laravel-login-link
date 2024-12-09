@@ -153,6 +153,14 @@ it('will not work in the wrong environment', function () {
     expect(auth()->check())->toBeFalse();
 });
 
+it('will not work on wrong host', function () {
+    config()->set('login-link.allowed_hosts', ['testing-host']);
+
+    post(route('loginLinkLogin'))->assertStatus(500);
+
+    expect(auth()->check())->toBeFalse();
+});
+
 it('will throw an exception when no user class can be determined', function () {
     config()->set('login-link.user_model', null);
     config()->set('auth.providers.users.model', null);
