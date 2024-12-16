@@ -38,7 +38,14 @@ class LoginLinkController
 
     protected function ensureAllowedHost(LoginLinkRequest $request): void
     {
+        $config = config('login-link');
+
+        if (! isset($config['allowed_hosts'])) {
+            return;
+        }
+
         $allowedHosts = config('login-link.allowed_hosts');
+
         $currentHost = $request->getHost();
 
         if (! in_array($currentHost, $allowedHosts)) {
