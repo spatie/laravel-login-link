@@ -2,6 +2,14 @@
 
 All notable changes to `laravel-login-link` will be documented in this file.
 
+## 1.5.2 - 2024-12-16
+
+### What's Changed
+
+* Fix null handling in LoginLinkRequest userAttributes by @fouteox in https://github.com/spatie/laravel-login-link/pull/43
+
+**Full Changelog**: https://github.com/spatie/laravel-login-link/compare/1.5.1...1.5.2
+
 ## 1.5.1 - 2024-12-16
 
 - make `allowed_hosts` backward compatible
