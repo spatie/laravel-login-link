@@ -4,6 +4,7 @@ use function Pest\Laravel\post;
 
 use Spatie\LoginLink\Tests\TestSupport\Models\Admin;
 use Spatie\LoginLink\Tests\TestSupport\Models\User;
+use Spatie\LoginLink\Tests\TestSupport\Models\Customer;
 
 it('will create and login a user', function () {
     post(route('loginLinkLogin'))->assertRedirect();
@@ -120,6 +121,28 @@ it('can create a user with both email and custom attributes', function () {
         'email' => 'freek@spatie.be',
         'role' => 'admin',
     ]);
+});
+
+it('can login an existing custom model with a specific email', function () {
+    Customer::factory()->create(['email' => 'customer@spatie.be']);
+    $data = ['email' => 'customer@spatie.be', 'user_model' => Customer::class];
+
+    post(route('loginLinkLogin'), $data)->assertRedirect();
+
+    expectUserToBeLoggedIn(['email' => 'customer@spatie.be']);
+    expect(Customer::count())->toBe(1);
+});
+
+it('can create and login a custom model with specific attributes', function () {
+    $data = [
+        'user_attributes' => json_encode(['email' => 'customer@spatie.be']),
+        'user_model' => Customer::class
+    ];
+
+    post(route('loginLinkLogin'), $data)->assertRedirect();
+
+    expectUserToBeLoggedIn(['email' => 'customer@spatie.be']);
+    expect(Customer::count())->toBe(1);
 });
 
 it('can redirect to a specific url', function () {
