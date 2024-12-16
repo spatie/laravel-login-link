@@ -19,6 +19,10 @@ class LoginLinkRequest extends FormRequest
 
     public function userAttributes(): array
     {
-        return json_decode($this->user_attributes, true) ?? [];
+        if ($this->user_attributes !== null) {
+            return json_decode($this->user_attributes, true);
+        }
+
+        return [];
     }
 }
