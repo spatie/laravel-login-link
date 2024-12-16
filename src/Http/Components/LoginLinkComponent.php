@@ -13,6 +13,7 @@ class LoginLinkComponent extends Component
         public string $label = 'Developer Login',
         public ?string $redirectUrl = null,
         public ?string $guard = null,
+        public ?string $userModel = null,
     ) {
     }
 

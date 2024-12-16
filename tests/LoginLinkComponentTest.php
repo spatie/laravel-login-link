@@ -56,6 +56,12 @@ it('can render a login link with a specific guard', function () {
     assertMatchesHtmlSnapshot($html);
 });
 
+it('can render a login link with a custom user model', function () {
+    $html = Blade::render('<x-login-link user_model="App\\Models\\Customer" />');
+
+    assertMatchesHtmlSnapshot($html);
+});
+
 it('can render a login link with specific css classes', function () {
     $html = Blade::render('<x-login-link class="text-red-500" />');
 

@@ -14,6 +14,7 @@ class LoginLinkRequest extends FormRequest
             'user_attributes' => '',
             'redirect_url' => '',
             'guard' => '',
+            'user_model' => '',
         ];
     }
 

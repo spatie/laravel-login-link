@@ -7,6 +7,7 @@
         <input type="hidden" name="redirect_url" value="{{ $redirectUrl }}">
         <input type="hidden" name="guard" value="{{ $guard }}">
         <input type="hidden" name="user_attributes" value="{{ json_encode($userAttributes) }}">
+        <input type="hidden" name="user_model" value="{{ $userModel }}">
 
         @include('login-link::loginLinkButton')
     </form>
