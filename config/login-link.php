@@ -13,7 +13,10 @@ return [
      * Login links will only work in these hosts. In all
      * other hosts, an exception will be thrown.
      */
-    'allowed_hosts' => ['localhost'],
+    'allowed_hosts' => [
+        'localhost',
+        '127.0.0.1',
+    ],
 
     /*
      * The package will automatically create a user model when trying
