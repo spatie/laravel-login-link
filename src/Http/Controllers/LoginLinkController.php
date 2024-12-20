@@ -39,7 +39,7 @@ class LoginLinkController
 
     protected function ensureAllowedHost(LoginLinkRequest $request): void
     {
-        if ($this->getLocalConfig('login-link.allowed_hosts') === null) {
+        if ($this->getUserConfig('login-link.allowed_hosts') === null) {
             return;
         }
 
@@ -141,7 +141,7 @@ class LoginLinkController
         return redirect()->intended()->getTargetUrl();
     }
 
-    private function getLocalConfig($key)
+    private function getUserConfig($key)
     {
         $parts = explode('.', $key);
 
