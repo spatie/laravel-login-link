@@ -155,6 +155,6 @@ class LoginLinkController
 
         $configuration = require $configPath;
 
-        return Arr::get($configuration, implode('.', $parts), $default);
+        return Arr::get($configuration, $key);
     }
 }
