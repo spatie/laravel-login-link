@@ -141,7 +141,7 @@ class LoginLinkController
         return redirect()->intended()->getTargetUrl();
     }
 
-    private function getUserConfig($key)
+    protected function getUserConfig($key)
     {
         $parts = explode('.', $key);
 
