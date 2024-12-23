@@ -39,9 +39,7 @@ class LoginLinkController
 
     protected function ensureAllowedHost(LoginLinkRequest $request): void
     {
-        $config = config('login-link');
-
-        if (! isset($config['allowed_hosts'])) {
+        if ($this->getUserConfig('login-link.allowed_hosts') === null) {
             return;
         }
 
@@ -145,6 +143,7 @@ class LoginLinkController
         return redirect()->intended()->getTargetUrl();
     }
 
+
     private function getUserModel(LoginLinkRequest $request): ?string
     {
         $class = $request->user_model;
@@ -158,5 +157,22 @@ class LoginLinkController
         }
 
         return null;
+    }
+  
+    protected function getUserConfig($key)
+    {
+        $parts = explode('.', $key);
+
+        $file = array_shift($parts);
+
+        $configPath = config_path($file.'.php');
+
+        if (! file_exists($configPath)) {
+            return config($key);
+        }
+
+        $configuration = require $configPath;
+
+        return Arr::get($configuration, $key);
     }
 }

@@ -2,6 +2,14 @@
 
 All notable changes to `laravel-login-link` will be documented in this file.
 
+## 1.5.3 - 2024-12-23
+
+### What's Changed
+
+* make allowed hosts backward compatible checking user config by @davidjr82 in https://github.com/spatie/laravel-login-link/pull/45
+
+**Full Changelog**: https://github.com/spatie/laravel-login-link/compare/1.5.2...1.5.3
+
 ## 1.5.2 - 2024-12-16
 
 ### What's Changed
