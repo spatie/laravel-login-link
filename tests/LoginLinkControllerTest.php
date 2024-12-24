@@ -3,8 +3,8 @@
 use function Pest\Laravel\post;
 
 use Spatie\LoginLink\Tests\TestSupport\Models\Admin;
-use Spatie\LoginLink\Tests\TestSupport\Models\User;
 use Spatie\LoginLink\Tests\TestSupport\Models\Customer;
+use Spatie\LoginLink\Tests\TestSupport\Models\User;
 
 it('will create and login a user', function () {
     post(route('loginLinkLogin'))->assertRedirect();
@@ -136,7 +136,7 @@ it('can login an existing custom model with a specific email', function () {
 it('can create and login a custom model with specific attributes', function () {
     $data = [
         'user_attributes' => json_encode(['email' => 'customer@spatie.be']),
-        'user_model' => Customer::class
+        'user_model' => Customer::class,
     ];
 
     post(route('loginLinkLogin'), $data)->assertRedirect();

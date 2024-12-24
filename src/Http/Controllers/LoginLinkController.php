@@ -143,7 +143,6 @@ class LoginLinkController
         return redirect()->intended()->getTargetUrl();
     }
 
-
     private function getUserModel(LoginLinkRequest $request): ?string
     {
         $class = $request->user_model;
@@ -158,7 +157,7 @@ class LoginLinkController
 
         return null;
     }
-  
+
     protected function getUserConfig($key)
     {
         $parts = explode('.', $key);

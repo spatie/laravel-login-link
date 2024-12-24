@@ -7,7 +7,6 @@ use Illuminate\Foundation\Auth\User as IlluminateUser;
 
 class Customer extends IlluminateUser
 {
-    protected $table = 'customers';
-
     use HasFactory;
+    protected $table = 'customers';
 }
