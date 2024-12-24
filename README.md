@@ -184,6 +184,18 @@ By default, the package will use the default guard. You can specify another guar
 <x-login-link guard="admin">
 ```
 
+### Using custom user model to log in
+
+You can specify the user model to log in by passing the `user_model` attribute to the component.
+
+The user model should implement the `Illuminate\Contracts\Auth\Authenticatable` interface.
+
+Using the `user_model` will use `null` as default for the `guard` attribute.
+
+```blade
+<x-login-link user_model="App\\Models\\Customer" email="customer@spatie.be">
+```
+
 ### Automatic user creation
 
 If the user that needs to be logged in does not exist, the package will use the factory of your user model to create the user, and log that new user in.

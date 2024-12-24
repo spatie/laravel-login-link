@@ -56,7 +56,7 @@ class LoginLinkController
     {
         $attributes = $this->getUserAttributes($request);
 
-        $authenticatableClass = $this->getAuthenticatableClass($request->guard);
+        $authenticatableClass = $this->getAuthenticatableClass($request);
 
         $user = $authenticatableClass::query()
             ->when(count($attributes), fn (Builder $query) => $query->where($attributes))
@@ -94,7 +94,7 @@ class LoginLinkController
     protected function getAuthenticatableIdentifier(LoginLinkRequest $request): ?array
     {
         if ($request->key) {
-            $userClass = new ($this->getAuthenticatableClass($request->guard));
+            $userClass = new ($this->getAuthenticatableClass($request));
 
             return [
                 'attribute' => ($userClass)->getKeyName(),
@@ -112,13 +112,15 @@ class LoginLinkController
         return null;
     }
 
-    protected function getAuthenticatableClass(?string $guard): string
+    protected function getAuthenticatableClass(LoginLinkRequest $request): string
     {
+        $guard = $request->guard;
         $provider = $guard === null
             ? config('auth.guards.web.provider')
             : config("auth.guards.{$guard}.provider");
 
-        return config('login-link.user_model')
+        return $this->getUserModel($request)
+            ?? config('login-link.user_model')
             ?? config("auth.providers.{$provider}.model")
             ?? throw InvalidUserClass::notFound();
     }
@@ -141,6 +143,22 @@ class LoginLinkController
         return redirect()->intended()->getTargetUrl();
     }
 
+
+    private function getUserModel(LoginLinkRequest $request): ?string
+    {
+        $class = $request->user_model;
+
+        if ($class === null) {
+            return null;
+        }
+
+        if (class_exists($class) && is_subclass_of($class, Authenticatable::class)) {
+            return $class;
+        }
+
+        return null;
+    }
+  
     protected function getUserConfig($key)
     {
         $parts = explode('.', $key);
