@@ -2,6 +2,18 @@
 
 All notable changes to `laravel-login-link` will be documented in this file.
 
+## 1.6.0 - 2024-12-24
+
+### What's Changed
+
+* Add support for using a custom user model  by @negoziator in https://github.com/spatie/laravel-login-link/pull/44
+
+### New Contributors
+
+* @negoziator made their first contribution in https://github.com/spatie/laravel-login-link/pull/44
+
+**Full Changelog**: https://github.com/spatie/laravel-login-link/compare/1.5.3...1.6.0
+
 ## 1.5.3 - 2024-12-23
 
 ### What's Changed
