@@ -2,6 +2,18 @@
 
 All notable changes to `laravel-login-link` will be documented in this file.
 
+## 1.6.2 - 2025-03-27
+
+### What's Changed
+
+* Fix ensure allowed host by @patrick-levesque in https://github.com/spatie/laravel-login-link/pull/48
+
+### New Contributors
+
+* @patrick-levesque made their first contribution in https://github.com/spatie/laravel-login-link/pull/48
+
+**Full Changelog**: https://github.com/spatie/laravel-login-link/compare/1.6.1...1.6.2
+
 ## 1.6.1 - 2025-02-21
 
 ### What's Changed
