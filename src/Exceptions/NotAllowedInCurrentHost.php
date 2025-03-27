@@ -10,7 +10,7 @@ class NotAllowedInCurrentHost extends Exception
     {
         $allowedHosts = collect($allowedHosts)
             ->map(fn (string $host) => "`{$host}`")
-            ->join(', ', ' and');
+            ->join(', ', ' and ');
 
         return new self("You can not use a login link when host is `{$currentHost}`. The host should be one of: {$allowedHosts}.");
     }
