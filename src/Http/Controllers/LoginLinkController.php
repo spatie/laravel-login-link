@@ -48,9 +48,13 @@ class LoginLinkController
 
         $currentHost = $request->getHost();
 
-        if (! in_array($currentHost, $allowedHosts)) {
-            throw NotAllowedInCurrentHost::make($currentHost, $allowedHosts);
+        foreach ($allowedHosts as $allowedHost) {
+            if (fnmatch($allowedHost, $currentHost)) {
+                return;
+            }
         }
+
+        throw NotAllowedInCurrentHost::make($currentHost, $allowedHosts);
     }
 
     protected function getAuthenticatable(LoginLinkRequest $request): Authenticatable
