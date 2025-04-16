@@ -184,6 +184,14 @@ it('will not work on wrong host', function () {
     expect(auth()->check())->toBeFalse();
 });
 
+it('will work with pattern host', function () {
+    config()->set('login-link.allowed_hosts', ['*host']);
+
+    post(route('loginLinkLogin'))->assertRedirect();
+
+    expect(auth()->check())->toBeTrue();
+});
+
 it('will throw an exception when no user class can be determined', function () {
     config()->set('login-link.user_model', null);
     config()->set('auth.providers.users.model', null);
