@@ -2,6 +2,18 @@
 
 All notable changes to `laravel-login-link` will be documented in this file.
 
+## 1.6.3 - 2025-04-16
+
+### What's Changed
+
+* Allow .test domains by default by @riasvdv in https://github.com/spatie/laravel-login-link/pull/50
+
+### New Contributors
+
+* @riasvdv made their first contribution in https://github.com/spatie/laravel-login-link/pull/50
+
+**Full Changelog**: https://github.com/spatie/laravel-login-link/compare/1.6.2...1.6.3
+
 ## 1.6.2 - 2025-03-27
 
 ### What's Changed
