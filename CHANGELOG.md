@@ -2,6 +2,21 @@
 
 All notable changes to `laravel-login-link` will be documented in this file.
 
+## 1.6.7 - 2026-08-14
+
+### What's Changed
+
+* Bump dependabot/fetch-metadata from 2.5.0 to 3.0.0 by @dependabot[bot] in https://github.com/spatie/laravel-login-link/pull/61
+* Bump dependabot/fetch-metadata from 3.0.0 to 3.1.0 by @dependabot[bot] in https://github.com/spatie/laravel-login-link/pull/62
+* Bump actions/checkout from 6 to 7 by @dependabot[bot] in https://github.com/spatie/laravel-login-link/pull/64
+* Defer Blade component registration by @jsandfordhughes in https://github.com/spatie/laravel-login-link/pull/66
+
+### New Contributors
+
+* @jsandfordhughes made their first contribution in https://github.com/spatie/laravel-login-link/pull/66
+
+**Full Changelog**: https://github.com/spatie/laravel-login-link/compare/1.6.6...1.6.7
+
 ## 1.6.6 - 2026-02-27
 
 - Use Pest 4
