@@ -2,7 +2,6 @@
 
 namespace Spatie\LoginLink;
 
-use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Route;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
@@ -17,7 +16,9 @@ class LoginLinkServiceProvider extends PackageServiceProvider
             ->hasConfigFile()
             ->hasViews();
 
-        Blade::component(LoginLinkComponent::class, 'login-link');
+        $this->loadViewComponentsAs('', [
+            'login-link' => LoginLinkComponent::class,
+        ]);
     }
 
     public function bootingPackage()
