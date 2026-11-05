@@ -31,7 +31,11 @@ it('can render a login link with a custom label', function () {
 it('can render a login link with custom user attributes', function () {
     $html = Blade::render('<x-login-link :user-attributes="[\'role\' => \'admin\']" />');
 
-    assertMatchesHtmlSnapshot($html);
+    $document = new DOMDocument();
+    $document->loadHTML($html);
+    $userAttributes = (new DOMXPath($document))->evaluate('string(//input[@name="user_attributes"]/@value)');
+
+    expect(json_decode($userAttributes, true, 512, JSON_THROW_ON_ERROR))->toBe(['role' => 'admin']);
 });
 
 it('can render a login link with custom user attributes with a space from a variable', function () {
@@ -41,7 +45,11 @@ it('can render a login link with custom user attributes with a space from a vari
     END;
     $html = Blade::render($blade);
 
-    assertMatchesHtmlSnapshot($html);
+    $document = new DOMDocument();
+    $document->loadHTML($html);
+    $userAttributes = (new DOMXPath($document))->evaluate('string(//input[@name="user_attributes"]/@value)');
+
+    expect(json_decode($userAttributes, true, 512, JSON_THROW_ON_ERROR))->toBe(['role' => 'senior admin']);
 });
 
 it('can render a login link with a specific redirect url', function () {
