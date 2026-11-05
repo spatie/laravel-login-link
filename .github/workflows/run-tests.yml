@@ -13,15 +13,17 @@ jobs:
     runs-on: ${{ matrix.os }}
 
     strategy:
-      fail-fast: true
+      fail-fast: false
       matrix:
         os: [ubuntu-latest]
-        php: ['8.3', '8.4', '8.5']
-        laravel: ['11.*', '12.*', '13.*']
+        php: ['8.3', '8.4', '8.5', '8.6']
+        laravel: ['12.*', '13.*']
         stability: [prefer-stable]
+        exclude:
+          # PHP 8.6 requires Pest 5, whose Laravel plugin requires Laravel 13.
+          - php: '8.6'
+            laravel: '12.*'
         include:
-          - laravel: 11.*
-            testbench: 9.*
           - laravel: 12.*
             testbench: 10.*
           - laravel: 13.*
